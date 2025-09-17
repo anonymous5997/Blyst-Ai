@@ -31,7 +31,7 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
       <div
         className="absolute inset-0 grid place-items-center"
         aria-hidden
-        style={{ mask: "radial-gradient(circle at center, white 60%, transparent 61%)", WebkitMask: "radial-gradient(circle at center, white 60%, transparent 61%)" } as React.CSSProperties}
+        style={{ mask: "radial-gradient(circle at center, white 60%, transparent 61%)", WebkitMask: "radial-gradient(circle at center, white 60%, transparent 61%)" } as any}
       >
         <video
           src={logoVideo}
