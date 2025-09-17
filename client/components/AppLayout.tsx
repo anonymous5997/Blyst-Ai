@@ -32,8 +32,8 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <p className="text-[10px] tracking-widest uppercase text-white/60">
             Blyst AI — Cognitive Interfaces for Business
           </p>
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
-            <span className="hidden sm:block text-xs font-semibold tracking-wide text-white/80">MENU</span>
+          <div className="fixed right-4 top-4 z-50 flex items-center gap-2">
+            <span className="text-xs font-semibold tracking-wide text-white/90">MENU</span>
             <MenuOverlay />
           </div>
         </header>
