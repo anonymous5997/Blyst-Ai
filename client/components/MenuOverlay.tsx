@@ -47,23 +47,23 @@ export default function MenuOverlay() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md"
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg overflow-y-auto"
             onClick={() => setOpen(false)}
             aria-modal="true"
             role="dialog"
             id={`menu-${id}`}
           >
             <motion.div
-              initial={{ y: -20, opacity: 0 }}
+              initial={{ y: -12, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 flex items-center justify-center"
+              exit={{ y: -12, opacity: 0 }}
+              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+              className="min-h-screen flex items-center justify-center px-6 py-16 md:py-24"
               onClick={(e) => e.stopPropagation()}
             >
-              <nav aria-label="Primary" className="text-center">
-                <ul className="space-y-6 md:space-y-8">
+              <nav aria-label="Primary" className="w-full max-w-4xl">
+                <ul className="grid grid-rows-4 gap-8 md:gap-10 justify-items-center">
                   {nav.map((item, i) => {
                     const active = pathname === item.to;
                     return (
@@ -71,18 +71,20 @@ export default function MenuOverlay() {
                         key={item.to}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.05 * i, duration: 0.35 }}
+                        transition={{ delay: 0.06 * i, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       >
                         <Link
                           to={item.to}
                           onClick={() => setOpen(false)}
-                          className={`relative text-3xl md:text-5xl font-extrabold tracking-tight ${
-                            active ? "text-white" : "text-white/60 hover:text-white"
+                          className={`relative font-extrabold tracking-tight text-[clamp(32px,6vw,64px)] ${
+                            active ? "text-white" : "text-white/55 hover:text-white"
                           }`}
                         >
-                          {item.label}
+                          <motion.span whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
+                            {item.label}
+                          </motion.span>
                           {active && (
-                            <span className="absolute -bottom-2 left-1/2 h-[3px] w-16 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] shadow-[0_0_16px_rgba(0,212,255,0.5)]" />
+                            <span className="absolute -bottom-3 left-1/2 h-[3px] w-24 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] shadow-[0_0_18px_rgba(0,212,255,0.55)]" />
                           )}
                         </Link>
                       </motion.li>
