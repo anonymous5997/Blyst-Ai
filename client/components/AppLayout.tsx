@@ -86,7 +86,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         <Particles />
         <header className="relative z-10 flex items-center justify-center py-3">
           <p className="text-[10px] tracking-widest uppercase text-white/60">
-            Immersive AI experiences crafted with precision
+            Blyst AI — Cognitive Interfaces for Business
           </p>
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <MenuOverlay />
