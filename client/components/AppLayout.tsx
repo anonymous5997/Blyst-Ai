@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Home, RefreshCw, Bot, Info, Mail, Menu } from "lucide-react";
 import Particles from "@/components/Particles";
+import MenuOverlay from "@/components/MenuOverlay";
 import { ReactNode } from "react";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
@@ -88,7 +89,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
             Immersive AI experiences crafted with precision
           </p>
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
-            <SidebarTrigger className="h-8 w-8 rounded-md bg-white/5 hover:bg-white/10 text-white" aria-label="Toggle menu" />
+            <MenuOverlay />
           </div>
         </header>
         <main className="relative z-10 p-4 md:p-8">{children}</main>

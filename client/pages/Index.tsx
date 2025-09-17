@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import BrandWave from "@/components/BrandWave";
 import TypewriterText from "@/components/TypewriterText";
+import ExpandingCards from "@/components/ExpandingCards";
 
 export default function Index() {
   const insights = [
@@ -26,6 +27,8 @@ export default function Index() {
           ))}
         </div>
       </section>
+
+      <ExpandingCards />
     </div>
   );
 }
