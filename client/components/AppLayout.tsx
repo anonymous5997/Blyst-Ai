@@ -23,14 +23,9 @@ export default function AppLayout({ children }: { children: ReactNode }) {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <SidebarProvider defaultOpen={true}>
-      <Sidebar variant="floating" collapsible="icon" className="backdrop-blur bg-[#0a0a0a]/80 border-white/10">
-        <SidebarHeader className="pt-4">
-          <div className="flex items-center gap-2 px-2 text-white/80">
-            <Menu className="size-4" />
-            <span className="text-xs">Menu</span>
-          </div>
-        </SidebarHeader>
+    <SidebarProvider defaultOpen={false}>
+      <Sidebar side="right" variant="floating" collapsible="icon" className="backdrop-blur bg-[#0a0a0a]/80 border-white/10">
+        <SidebarHeader className="pt-2" />
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupContent>
@@ -88,10 +83,13 @@ export default function AppLayout({ children }: { children: ReactNode }) {
       <SidebarInset className="bg-black">
         <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-48 bg-[radial-gradient(circle_at_50%_-20%,rgba(139,92,246,0.35),rgba(0,0,0,0)_40%),radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.2),rgba(0,0,0,0)_40%),radial-gradient(circle_at_70%_30%,rgba(255,138,0,0.14),rgba(0,0,0,0)_40%)]" />
         <Particles />
-        <header className="relative z-10 flex justify-center py-3">
+        <header className="relative z-10 flex items-center justify-center py-3">
           <p className="text-[10px] tracking-widest uppercase text-white/60">
             Immersive AI experiences crafted with precision
           </p>
+          <div className="absolute right-3 top-1/2 -translate-y-1/2">
+            <SidebarTrigger className="h-8 w-8 rounded-md bg-white/5 hover:bg-white/10 text-white" aria-label="Toggle menu" />
+          </div>
         </header>
         <main className="relative z-10 p-4 md:p-8">{children}</main>
       </SidebarInset>

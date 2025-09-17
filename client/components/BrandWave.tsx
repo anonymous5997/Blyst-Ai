@@ -86,16 +86,6 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
         </g>
       </svg>
 
-      <div className="absolute inset-0 grid place-items-center pointer-events-none">
-        <div className="text-center">
-          <div className="text-gradient text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
-            {label}
-          </div>
-          <div className="mt-2 text-xs md:text-sm text-white/70">
-            Conversational Intelligence Engine
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
