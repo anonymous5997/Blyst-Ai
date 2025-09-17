@@ -87,7 +87,7 @@ export default function Particles({ className = "" }: { className?: string }) {
   return (
     <canvas
       ref={canvasRef}
-      className={"pointer-events-none absolute inset-0 h-full w-full " + className}
+      className={"pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-70 " + className}
       aria-hidden="true"
     />
   );
