@@ -1,0 +1,86 @@
+import { useMemo, useRef, useState } from "react";
+
+type Props = {
+  size?: number;
+  className?: string;
+  label?: string;
+};
+
+export default function BrandWave({ size = 320, className = "", label = "Blyst AI" }: Props) {
+  const [boost, setBoost] = useState(false);
+  const idRef = useRef(`wave-${Math.random().toString(36).slice(2)}`);
+  const id = idRef.current;
+
+  const { strokeWidth, radius } = useMemo(() => {
+    const sw = Math.max(6, Math.floor(size / 40));
+    return { strokeWidth: sw, radius: size / 2 - sw };
+  }, [size]);
+
+  return (
+    <div
+      className={"relative select-none " + className}
+      onMouseEnter={() => setBoost(true)}
+      onMouseLeave={() => setBoost(false)}
+      onClick={() => setBoost((b) => !b)}
+      role="img"
+      aria-label="Animated Blyst AI ring"
+      style={{ filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))" }}
+    >
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <defs>
+          <linearGradient id={`${id}-grad1`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#9b5fff" />
+            <stop offset="50%" stopColor="#00d4ff" />
+            <stop offset="100%" stopColor="#ff8a00" />
+          </linearGradient>
+          <linearGradient id={`${id}-grad2`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ff8a00" />
+            <stop offset="50%" stopColor="#9b5fff" />
+            <stop offset="100%" stopColor="#00d4ff" />
+          </linearGradient>
+          <filter id={`${id}-warp`} x="-50%" y="-50%" width="200%" height="200%">
+            <feTurbulence type="fractalNoise" baseFrequency={boost ? 0.012 : 0.02} numOctaves="2" seed="3" result="noise">
+              <animate attributeName="baseFrequency" dur={boost ? "1.4s" : "3s"} values={boost ? "0.012;0.02;0.012" : "0.02;0.015;0.02"} repeatCount="indefinite"/>
+            </feTurbulence>
+            <feDisplacementMap in2="noise" in="SourceGraphic" scale={boost ? 18 : 10} xChannelSelector="R" yChannelSelector="G" />
+            <feGaussianBlur stdDeviation="1.2"/>
+          </filter>
+        </defs>
+
+        <g filter={`url(#${id}-warp)`}>
+          {[0, 1, 2].map((i) => {
+            const dash = 40 + i * 10;
+            const offset = (performance.now() / (boost ? 800 : 1600)) % 100;
+            return (
+              <circle
+                key={i}
+                cx={size / 2}
+                cy={size / 2}
+                r={radius - i * (strokeWidth + 6)}
+                fill="none"
+                stroke={`url(#${i % 2 ? `${id}-grad2` : `${id}-grad1`})`}
+                strokeWidth={strokeWidth - i}
+                strokeDasharray={`${dash} ${dash}`}
+                strokeDashoffset={-offset * dash}
+                opacity={0.9 - i * 0.25}
+              >
+                <animate attributeName="stroke-dashoffset" values={`0;${-dash * 2};0`} dur={boost ? `${1.2 + i * 0.2}s` : `${2.2 + i * 0.5}s`} repeatCount="indefinite" />
+              </circle>
+            );
+          })}
+        </g>
+      </svg>
+
+      <div className="absolute inset-0 grid place-items-center pointer-events-none">
+        <div className="text-center">
+          <div className="text-gradient text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
+            {label}
+          </div>
+          <div className="mt-2 text-xs md:text-sm text-white/70">
+            Conversational Intelligence Engine
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
