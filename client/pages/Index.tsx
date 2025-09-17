@@ -5,9 +5,11 @@ import ExpandingCards from "@/components/ExpandingCards";
 
 export default function Index() {
   const insights = [
-    "Understanding your intent…",
-    "Synthesizing insights from recent data streams…",
-    "Proposed next action: launch targeted experiment in Segment A.",
+    "Blyst AI is listening and aligning to your goal…",
+    "Parsing live metrics and knowledge graphs…",
+    "Opportunity detected: reduce drop‑off with guided onboarding.",
+    "Confidence 0.82 — pilot in Segment A for 7 days.",
+    "Next best step: auto‑generate workflow and stakeholders.",
   ];
 
   return (
