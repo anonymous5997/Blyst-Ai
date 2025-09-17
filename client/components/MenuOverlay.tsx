@@ -69,21 +69,36 @@ export default function MenuOverlay() {
                 <motion.ul
                   initial="hidden"
                   animate="show"
-                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+                  variants={{
+                    hidden: {},
+                    show: { transition: { staggerChildren: 0.08 } },
+                  }}
                   className="grid grid-rows-4 gap-8 md:gap-10 justify-items-center"
                 >
                   {nav.map((item) => {
                     const active = pathname === item.to;
                     return (
-                      <motion.li key={item.to} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
+                      <motion.li
+                        key={item.to}
+                        variants={{
+                          hidden: { opacity: 0, y: 12 },
+                          show: { opacity: 1, y: 0 },
+                        }}
+                      >
                         <Link
                           to={item.to}
                           onClick={() => setOpen(false)}
                           className={`relative font-extrabold tracking-tight text-[clamp(32px,6vw,64px)] ${
-                            active ? "text-white" : "text-white/60 hover:text-white"
+                            active
+                              ? "text-white"
+                              : "text-white/60 hover:text-white"
                           }`}
                         >
-                          <motion.span whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
+                          <motion.span
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="inline-block"
+                          >
                             {item.label}
                           </motion.span>
                           {active && (

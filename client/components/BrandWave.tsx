@@ -6,7 +6,11 @@ type Props = {
   label?: string;
 };
 
-export default function BrandWave({ size = 320, className = "", label = "Blyst AI" }: Props) {
+export default function BrandWave({
+  size = 320,
+  className = "",
+  label = "Blyst AI",
+}: Props) {
   const [boost, setBoost] = useState(false);
   const idRef = useRef(`wave-${Math.random().toString(36).slice(2)}`);
   const id = idRef.current;
@@ -31,7 +35,13 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
       <div
         className="absolute inset-0 grid place-items-center"
         aria-hidden
-        style={{ mask: "radial-gradient(circle at center, white 60%, transparent 61%)", WebkitMask: "radial-gradient(circle at center, white 60%, transparent 61%)" } as any}
+        style={
+          {
+            mask: "radial-gradient(circle at center, white 60%, transparent 61%)",
+            WebkitMask:
+              "radial-gradient(circle at center, white 60%, transparent 61%)",
+          } as any
+        }
       >
         <video
           src={logoVideo}
@@ -55,12 +65,35 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
             <stop offset="50%" stopColor="#9b5fff" />
             <stop offset="100%" stopColor="#00d4ff" />
           </linearGradient>
-          <filter id={`${id}-warp`} x="-50%" y="-50%" width="200%" height="200%">
-            <feTurbulence type="fractalNoise" baseFrequency={boost ? 0.012 : 0.02} numOctaves="2" seed="3" result="noise">
-              <animate attributeName="baseFrequency" dur={boost ? "1.4s" : "3s"} values={boost ? "0.012;0.02;0.012" : "0.02;0.015;0.02"} repeatCount="indefinite"/>
+          <filter
+            id={`${id}-warp`}
+            x="-50%"
+            y="-50%"
+            width="200%"
+            height="200%"
+          >
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency={boost ? 0.012 : 0.02}
+              numOctaves="2"
+              seed="3"
+              result="noise"
+            >
+              <animate
+                attributeName="baseFrequency"
+                dur={boost ? "1.4s" : "3s"}
+                values={boost ? "0.012;0.02;0.012" : "0.02;0.015;0.02"}
+                repeatCount="indefinite"
+              />
             </feTurbulence>
-            <feDisplacementMap in2="noise" in="SourceGraphic" scale={boost ? 18 : 10} xChannelSelector="R" yChannelSelector="G" />
-            <feGaussianBlur stdDeviation="1.2"/>
+            <feDisplacementMap
+              in2="noise"
+              in="SourceGraphic"
+              scale={boost ? 18 : 10}
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+            <feGaussianBlur stdDeviation="1.2" />
           </filter>
         </defs>
 
@@ -79,13 +112,17 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
                 strokeDasharray={`${dash} ${dash}`}
                 opacity={0.9 - i * 0.25}
               >
-                <animate attributeName="stroke-dashoffset" values={`0;${-dash * 2};0`} dur={boost ? `${1.2 + i * 0.2}s` : `${2.2 + i * 0.5}s`} repeatCount="indefinite" />
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values={`0;${-dash * 2};0`}
+                  dur={boost ? `${1.2 + i * 0.2}s` : `${2.2 + i * 0.5}s`}
+                  repeatCount="indefinite"
+                />
               </circle>
             );
           })}
         </g>
       </svg>
-
     </div>
   );
 }

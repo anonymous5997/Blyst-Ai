@@ -1,24 +1,68 @@
 import { motion } from "framer-motion";
-import { Globe, Bot, BarChart3, Brain, Search, LineChart, Activity } from "lucide-react";
+import {
+  Globe,
+  Bot,
+  BarChart3,
+  Brain,
+  Search,
+  LineChart,
+  Activity,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const services = [
-  { icon: Globe, title: "Web Development", desc: "Responsive, performant web apps and sites." },
-  { icon: Bot, title: "GenAI Solutions", desc: "Conversational AI, agents, and automation." },
-  { icon: BarChart3, title: "Insights from Data", desc: "Decisions powered by real-time analytics." },
-  { icon: Brain, title: "Custom AI/ML Models", desc: "Tailored models for your domain." },
-  { icon: Search, title: "SEO & Digital Marketing", desc: "Acquire and grow with measurable ROI." },
-  { icon: LineChart, title: "Revenue Analysis", desc: "Model revenue and optimize funnels." },
-  { icon: Activity, title: "Business Intelligence", desc: "End-to-end BI and dashboards." },
+  {
+    icon: Globe,
+    title: "Web Development",
+    desc: "Responsive, performant web apps and sites.",
+  },
+  {
+    icon: Bot,
+    title: "GenAI Solutions",
+    desc: "Conversational AI, agents, and automation.",
+  },
+  {
+    icon: BarChart3,
+    title: "Insights from Data",
+    desc: "Decisions powered by real-time analytics.",
+  },
+  {
+    icon: Brain,
+    title: "Custom AI/ML Models",
+    desc: "Tailored models for your domain.",
+  },
+  {
+    icon: Search,
+    title: "SEO & Digital Marketing",
+    desc: "Acquire and grow with measurable ROI.",
+  },
+  {
+    icon: LineChart,
+    title: "Revenue Analysis",
+    desc: "Model revenue and optimize funnels.",
+  },
+  {
+    icon: Activity,
+    title: "Business Intelligence",
+    desc: "End-to-end BI and dashboards.",
+  },
 ];
 
 export default function ServicesHomeSection() {
-  const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.06 } } };
-  const item = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.35 } } };
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.06 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 12 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+  };
   return (
     <section className="mt-12 md:mt-16" aria-label="Blyst AI Services">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg md:text-xl font-semibold text-white">Our Services</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-white">
+          Our Services
+        </h2>
       </div>
       <motion.div
         variants={container}

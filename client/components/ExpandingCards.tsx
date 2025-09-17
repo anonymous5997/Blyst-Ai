@@ -8,9 +8,18 @@ export default function ExpandingCards() {
   const [advance, setAdvance] = useState(false);
 
   const cards = [
-    { title: "GenAI", text: "Conversational systems that understand context and intent." },
-    { title: "Intelligence", text: "Real-time insights that drive actions and outcomes." },
-    { title: "Automation", text: "From idea to impact with orchestrated workflows." },
+    {
+      title: "GenAI",
+      text: "Conversational systems that understand context and intent.",
+    },
+    {
+      title: "Intelligence",
+      text: "Real-time insights that drive actions and outcomes.",
+    },
+    {
+      title: "Automation",
+      text: "From idea to impact with orchestrated workflows.",
+    },
   ];
 
   return (
@@ -27,11 +36,16 @@ export default function ExpandingCards() {
           >
             <Card
               className={`bg-card/70 backdrop-blur border-white/10 overflow-hidden transition ${
-                i === 1 ? "hover:shadow-[0_0_40px_rgba(155,95,255,0.2)]" : "hover:shadow-[0_0_24px_rgba(0,212,255,0.15)]"
+                i === 1
+                  ? "hover:shadow-[0_0_40px_rgba(155,95,255,0.2)]"
+                  : "hover:shadow-[0_0_24px_rgba(0,212,255,0.15)]"
               }`}
             >
               <CardContent className="p-4 md:p-6">
-                <motion.h3 layout className="text-xl md:text-2xl font-semibold text-white">
+                <motion.h3
+                  layout
+                  className="text-xl md:text-2xl font-semibold text-white"
+                >
                   {c.title}
                 </motion.h3>
                 <p className="mt-2 text-white/70 hidden md:block">{c.text}</p>
@@ -61,23 +75,28 @@ export default function ExpandingCards() {
             transition={{ duration: 0.4 }}
             className="mt-6 grid gap-4 md:grid-cols-3"
           >
-            {["What we power", "How it adapts", "Proof of value"].map((h, i) => (
-              <Card key={h} className="bg-card/70 backdrop-blur border-white/10">
-                <CardContent className="p-5 md:p-6">
-                  <h4 className="text-white font-semibold">{h}</h4>
-                  <TypewriterText
-                    className="mt-2 text-sm text-white/70"
-                    text={
-                      i === 0
-                        ? "Voice/chat, agentic workflows, and data copilots."
-                        : i === 1
-                        ? "Learns from your data and context; respects governance."
-                        : "KPIs uplift, cycle time reduced, and happier users."
-                    }
-                  />
-                </CardContent>
-              </Card>
-            ))}
+            {["What we power", "How it adapts", "Proof of value"].map(
+              (h, i) => (
+                <Card
+                  key={h}
+                  className="bg-card/70 backdrop-blur border-white/10"
+                >
+                  <CardContent className="p-5 md:p-6">
+                    <h4 className="text-white font-semibold">{h}</h4>
+                    <TypewriterText
+                      className="mt-2 text-sm text-white/70"
+                      text={
+                        i === 0
+                          ? "Voice/chat, agentic workflows, and data copilots."
+                          : i === 1
+                            ? "Learns from your data and context; respects governance."
+                            : "KPIs uplift, cycle time reduced, and happier users."
+                      }
+                    />
+                  </CardContent>
+                </Card>
+              ),
+            )}
             <div className="md:col-span-3 flex justify-center">
               <button
                 onClick={() => setAdvance(true)}
@@ -101,13 +120,16 @@ export default function ExpandingCards() {
             <Card className="bg-card/70 backdrop-blur border-white/10 overflow-hidden">
               <CardContent className="p-0">
                 <div className="p-4 md:p-6">
-                  <h3 className="text-2xl font-semibold text-white">Conversational Intelligence</h3>
+                  <h3 className="text-2xl font-semibold text-white">
+                    Conversational Intelligence
+                  </h3>
                   <div className="mt-4 space-y-3">
                     <div className="max-w-[80%] rounded-xl bg-white/5 px-4 py-3 text-white/90 shadow">
                       How can we cut onboarding time by 20%?
                     </div>
                     <div className="max-w-[85%] rounded-xl bg-gradient-to-r from-[#9b5fff]/10 to-[#00d4ff]/10 px-4 py-3 text-white/90 shadow ml-auto">
-                      Leverage guided flows + prefilled steps; estimated 24% reduction based on similar teams.
+                      Leverage guided flows + prefilled steps; estimated 24%
+                      reduction based on similar teams.
                     </div>
                   </div>
                   <form

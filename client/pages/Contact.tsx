@@ -5,8 +5,12 @@ export default function Contact() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="text-3xl md:text-5xl font-extrabold text-gradient">Contact</h1>
-      <p className="mt-2 text-white/70">Tell us about your goals. We’ll respond quickly.</p>
+      <h1 className="text-3xl md:text-5xl font-extrabold text-gradient">
+        Contact
+      </h1>
+      <p className="mt-2 text-white/70">
+        Tell us about your goals. We’ll respond quickly.
+      </p>
 
       <form
         onSubmit={(e) => {
@@ -24,7 +28,10 @@ export default function Contact() {
               placeholder=" "
               className="peer w-full rounded-lg bg-white/5 px-4 pt-5 pb-2 text-white placeholder-transparent outline-none transition focus:ring-2 focus:ring-secondary/60 border border-white/10"
             />
-            <label htmlFor="name" className="pointer-events-none absolute left-3 top-2 text-xs text-white/60 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+            <label
+              htmlFor="name"
+              className="pointer-events-none absolute left-3 top-2 text-xs text-white/60 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs"
+            >
               Name
             </label>
           </div>
@@ -37,7 +44,10 @@ export default function Contact() {
               placeholder=" "
               className="peer w-full rounded-lg bg-white/5 px-4 pt-5 pb-2 text-white placeholder-transparent outline-none transition focus:ring-2 focus:ring-secondary/60 border border-white/10"
             />
-            <label htmlFor="email" className="pointer-events-none absolute left-3 top-2 text-xs text-white/60 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+            <label
+              htmlFor="email"
+              className="pointer-events-none absolute left-3 top-2 text-xs text-white/60 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs"
+            >
               Email
             </label>
           </div>
@@ -50,7 +60,10 @@ export default function Contact() {
               placeholder=" "
               className="peer w-full rounded-lg bg-white/5 px-4 pt-5 pb-2 text-white placeholder-transparent outline-none transition focus:ring-2 focus:ring-secondary/60 border border-white/10"
             />
-            <label htmlFor="message" className="pointer-events-none absolute left-3 top-2 text-xs text-white/60 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+            <label
+              htmlFor="message"
+              className="pointer-events-none absolute left-3 top-2 text-xs text-white/60 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs"
+            >
               Message
             </label>
           </div>
@@ -62,11 +75,15 @@ export default function Contact() {
           </button>
         </div>
         {sent && (
-          <p className="mt-4 text-sm text-secondary">Thanks! We’ll get back to you shortly.</p>
+          <p className="mt-4 text-sm text-secondary">
+            Thanks! We’ll get back to you shortly.
+          </p>
         )}
       </form>
 
-      <p className="mt-6 text-sm text-white/50">Connect this form to your backend or automation tool when ready.</p>
+      <p className="mt-6 text-sm text-white/50">
+        Connect this form to your backend or automation tool when ready.
+      </p>
     </div>
   );
 }

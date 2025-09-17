@@ -37,7 +37,9 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <main className="p-4 md:p-8">{children}</main>
         </div>
         <div className="fixed right-4 top-4 z-[200] flex items-center gap-2">
-          <span className="text-xs font-semibold tracking-wide text-white/90">MENU</span>
+          <span className="text-xs font-semibold tracking-wide text-white/90">
+            MENU
+          </span>
           <MenuOverlay />
         </div>
       </SidebarInset>

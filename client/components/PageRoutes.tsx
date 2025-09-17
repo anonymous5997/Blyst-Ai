@@ -24,11 +24,46 @@ export default function PageRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrap><Index /></PageWrap>} />
-        <Route path="/services" element={<PageWrap><Services /></PageWrap>} />
-        <Route path="/about" element={<PageWrap><About /></PageWrap>} />
-        <Route path="/contact" element={<PageWrap><Contact /></PageWrap>} />
-        <Route path="*" element={<PageWrap><NotFound /></PageWrap>} />
+        <Route
+          path="/"
+          element={
+            <PageWrap>
+              <Index />
+            </PageWrap>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <PageWrap>
+              <Services />
+            </PageWrap>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PageWrap>
+              <About />
+            </PageWrap>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageWrap>
+              <Contact />
+            </PageWrap>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <PageWrap>
+              <NotFound />
+            </PageWrap>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );

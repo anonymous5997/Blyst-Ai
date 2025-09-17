@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 
-export default function TypewriterText({ text, className = "" }: { text: string; className?: string }) {
+export default function TypewriterText({
+  text,
+  className = "",
+}: {
+  text: string;
+  className?: string;
+}) {
   const letters = Array.from(text);
   const container = {
     hidden: { opacity: 0 },
@@ -11,11 +17,21 @@ export default function TypewriterText({ text, className = "" }: { text: string;
   };
   const child = {
     hidden: { opacity: 0, y: 2 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 18 } },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 200, damping: 18 },
+    },
   };
 
   return (
-    <motion.p className={className} variants={container} initial="hidden" animate="show" aria-live="polite">
+    <motion.p
+      className={className}
+      variants={container}
+      initial="hidden"
+      animate="show"
+      aria-live="polite"
+    >
       {letters.map((ch, i) => (
         <motion.span key={i} variants={child} className="inline-block">
           {ch === " " ? "\u00A0" : ch}

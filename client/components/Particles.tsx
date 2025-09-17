@@ -17,11 +17,19 @@ export default function Particles({ className = "" }: { className?: string }) {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d", { alpha: true })!;
     let width = (canvas.width = canvas.clientWidth * window.devicePixelRatio);
-    let height = (canvas.height = canvas.clientHeight * window.devicePixelRatio);
+    let height = (canvas.height =
+      canvas.clientHeight * window.devicePixelRatio);
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
     const particles: Particle[] = [];
-    const max = Math.min(120, Math.floor((width / window.devicePixelRatio) * (height / window.devicePixelRatio) / 8000));
+    const max = Math.min(
+      120,
+      Math.floor(
+        ((width / window.devicePixelRatio) *
+          (height / window.devicePixelRatio)) /
+          8000,
+      ),
+    );
 
     function spawn() {
       particles.length = 0;
@@ -46,11 +54,18 @@ export default function Particles({ className = "" }: { className?: string }) {
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < -5 || p.x > (width / window.devicePixelRatio) + 5) p.vx *= -1;
-        if (p.y < -5 || p.y > (height / window.devicePixelRatio) + 5) p.vy *= -1;
+        if (p.x < -5 || p.x > width / window.devicePixelRatio + 5) p.vx *= -1;
+        if (p.y < -5 || p.y > height / window.devicePixelRatio + 5) p.vy *= -1;
 
         ctx.beginPath();
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
+        const gradient = ctx.createRadialGradient(
+          p.x,
+          p.y,
+          0,
+          p.x,
+          p.y,
+          p.r * 6,
+        );
         const color1 = `hsla(${p.hue}, 90%, 60%, 0.8)`;
         const color2 = `hsla(${(p.hue + 60) % 360}, 90%, 60%, 0)`;
         gradient.addColorStop(0, color1);
@@ -87,7 +102,10 @@ export default function Particles({ className = "" }: { className?: string }) {
   return (
     <canvas
       ref={canvasRef}
-      className={"pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-70 " + className}
+      className={
+        "pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-70 " +
+        className
+      }
       aria-hidden="true"
     />
   );

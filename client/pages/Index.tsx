@@ -17,8 +17,12 @@ export default function Index() {
       <section className="relative flex flex-col items-center gap-4 md:gap-6 pt-8 md:pt-12">
         <BrandWave size={340} />
         <div className="text-center">
-          <h1 className="text-2xl md:text-4xl font-extrabold text-white">Cognitive Interfaces for Business</h1>
-          <p className="mt-2 text-sm md:text-base text-white/70">Understand intent. Generate insight. Orchestrate action.</p>
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white">
+            Cognitive Interfaces for Business
+          </h1>
+          <p className="mt-2 text-sm md:text-base text-white/70">
+            Understand intent. Generate insight. Orchestrate action.
+          </p>
         </div>
       </section>
 
@@ -39,7 +43,11 @@ function InsightsGrid({ insights }: { insights: string[] }) {
   };
   const item = {
     hidden: { opacity: 0, y: 14 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
