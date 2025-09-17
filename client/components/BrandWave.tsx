@@ -10,6 +10,8 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
   const [boost, setBoost] = useState(false);
   const idRef = useRef(`wave-${Math.random().toString(36).slice(2)}`);
   const id = idRef.current;
+  const logoVideo =
+    "https://cdn.builder.io/o/assets%2F172b15ac9718458aa01c370ab6e1a4cf%2F2dda27bd7840414ca4a3cdf13f331080?alt=media&token=c49e08ab-2e73-4536-82ec-2e87291bde10&apiKey=172b15ac9718458aa01c370ab6e1a4cf";
 
   const { strokeWidth, radius } = useMemo(() => {
     const sw = Math.max(6, Math.floor(size / 40));
@@ -26,6 +28,21 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
       aria-label="Animated Blyst AI ring"
       style={{ filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))" }}
     >
+      <div
+        className="absolute inset-0 grid place-items-center"
+        aria-hidden
+        style={{ mask: "radial-gradient(circle at center, white 60%, transparent 61%)" }}
+      >
+        <video
+          src={logoVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-[80%] w-[80%] rounded-full object-cover opacity-70"
+        />
+      </div>
+
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <defs>
           <linearGradient id={`${id}-grad1`} x1="0%" y1="0%" x2="100%" y2="0%">
@@ -50,7 +67,6 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
         <g filter={`url(#${id}-warp)`}>
           {[0, 1, 2].map((i) => {
             const dash = 40 + i * 10;
-            const offset = (performance.now() / (boost ? 800 : 1600)) % 100;
             return (
               <circle
                 key={i}
@@ -61,7 +77,6 @@ export default function BrandWave({ size = 320, className = "", label = "Blyst A
                 stroke={`url(#${i % 2 ? `${id}-grad2` : `${id}-grad1`})`}
                 strokeWidth={strokeWidth - i}
                 strokeDasharray={`${dash} ${dash}`}
-                strokeDashoffset={-offset * dash}
                 opacity={0.9 - i * 0.25}
               >
                 <animate attributeName="stroke-dashoffset" values={`0;${-dash * 2};0`} dur={boost ? `${1.2 + i * 0.2}s` : `${2.2 + i * 0.5}s`} repeatCount="indefinite" />
