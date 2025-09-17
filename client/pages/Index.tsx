@@ -14,23 +14,51 @@ export default function Index() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <section className="relative grid place-items-center py-10 md:py-16">
-        <BrandWave size={360} />
+      <section className="relative flex flex-col items-center gap-4 md:gap-6 pt-8 md:pt-12">
+        <BrandWave size={340} />
+        <div className="text-center">
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white">Cognitive Interfaces for Business</h1>
+          <p className="mt-2 text-sm md:text-base text-white/70">Understand intent. Generate insight. Orchestrate action.</p>
+        </div>
       </section>
 
-      <section aria-label="Results" className="mt-2 md:mt-6">
-        <div className="grid gap-4 md:grid-cols-2">
-          {insights.map((line, i) => (
-            <Card key={i} className="bg-card/70 backdrop-blur border-white/10">
-              <CardContent className="p-5 md:p-6">
-                <TypewriterText className="text-white/90" text={line} />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      <section aria-label="AI Insights" className="mt-6 md:mt-8">
+        <InsightsGrid insights={insights} />
       </section>
 
       <ExpandingCards />
     </div>
+  );
+}
+
+import { motion } from "framer-motion";
+function InsightsGrid({ insights }: { insights: string[] }) {
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.12 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 14 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+  };
+
+  return (
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {insights.map((line, i) => (
+        <motion.div key={i} variants={item}>
+          <Card className="bg-card/70 backdrop-blur border-white/10 shadow-[0_0_24px_rgba(155,95,255,0.12)]">
+            <CardContent className="p-5 md:p-6">
+              <TypewriterText className="text-white/90" text={line} />
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </motion.div>
   );
 }
