@@ -23,9 +23,9 @@ export default function MenuOverlay() {
 
   const nav = [
     { to: "/", label: "HOME" },
-    { to: "/services", label: "SERVICES" },
+    { to: "/services", label: "SERVICE" },
     { to: "/about", label: "ABOUT" },
-    { to: "/contact", label: "CONTACT" },
+    { to: "/contact", label: "CONTACT US" },
   ];
 
   return (
