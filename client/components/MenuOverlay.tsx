@@ -9,15 +9,18 @@ export default function MenuOverlay() {
   const id = useId();
 
   useEffect(() => {
-    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
+    if (open) {
+      document.addEventListener("keydown", onKey);
+      document.body.style.overflow = "hidden";
+      document.documentElement.classList.add("menu-open");
+    }
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      document.documentElement.classList.remove("menu-open");
     };
   }, [open]);
 
@@ -48,7 +51,7 @@ export default function MenuOverlay() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg overflow-y-auto"
+            className="fixed inset-0 z-[180] bg-black/70 backdrop-blur-[16px] overflow-y-auto"
             onClick={() => setOpen(false)}
             aria-modal="true"
             role="dialog"
@@ -63,34 +66,34 @@ export default function MenuOverlay() {
               onClick={(e) => e.stopPropagation()}
             >
               <nav aria-label="Primary" className="w-full max-w-4xl">
-                <ul className="grid grid-rows-4 gap-8 md:gap-10 justify-items-center">
-                  {nav.map((item, i) => {
+                <motion.ul
+                  initial="hidden"
+                  animate="show"
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+                  className="grid grid-rows-4 gap-8 md:gap-10 justify-items-center"
+                >
+                  {nav.map((item) => {
                     const active = pathname === item.to;
                     return (
-                      <motion.li
-                        key={item.to}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.06 * i, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      >
+                      <motion.li key={item.to} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
                         <Link
                           to={item.to}
                           onClick={() => setOpen(false)}
                           className={`relative font-extrabold tracking-tight text-[clamp(32px,6vw,64px)] ${
-                            active ? "text-white" : "text-white/55 hover:text-white"
+                            active ? "text-white" : "text-white/60 hover:text-white"
                           }`}
                         >
-                          <motion.span whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
+                          <motion.span whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
                             {item.label}
                           </motion.span>
                           {active && (
-                            <span className="absolute -bottom-3 left-1/2 h-[3px] w-24 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] shadow-[0_0_18px_rgba(0,212,255,0.55)]" />
+                            <span className="absolute -bottom-3 left-1/2 h-[3px] w-24 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] shadow-[0_0_20px_rgba(0,212,255,0.6)]" />
                           )}
                         </Link>
                       </motion.li>
                     );
                   })}
-                </ul>
+                </motion.ul>
               </nav>
             </motion.div>
           </motion.div>
