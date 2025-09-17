@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import BrandWave from "@/components/BrandWave";
 import TypewriterText from "@/components/TypewriterText";
 import ExpandingCards from "@/components/ExpandingCards";
+import ServicesHomeSection from "@/components/ServicesHomeSection";
 
 export default function Index() {
   const insights = [
@@ -22,11 +23,12 @@ export default function Index() {
         </div>
       </section>
 
-      <section aria-label="AI Insights" className="mt-6 md:mt-8">
+      <section aria-label="AI Insights" className="mt-4 md:mt-6">
         <InsightsGrid insights={insights} />
       </section>
 
       <ExpandingCards />
+      <ServicesHomeSection />
     </div>
   );
 }
