@@ -33,6 +33,7 @@ export default function MenuOverlay() {
 
   return (
     <div className="relative">
+      {/* Menu toggle button */}
       <button
         aria-haspopup="dialog"
         aria-expanded={open}
@@ -62,10 +63,20 @@ export default function MenuOverlay() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -12, opacity: 0 }}
               transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="min-h-screen flex items-center justify-center px-6 py-16 md:py-24"
+              className="min-h-screen flex flex-col items-center justify-start px-6 py-16 md:py-24 relative"
               onClick={(e) => e.stopPropagation()}
             >
-              <nav aria-label="Primary" className="w-full max-w-4xl">
+              {/* Close button styled as red circle with white cross */}
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="absolute top-8 right-12 w-14 h-14 rounded-full border-4 border-red-600 flex items-center justify-center text-white text-3xl cursor-pointer hover:shadow-lg hover:shadow-red-600 transition-shadow z-50"
+                type="button"
+              >
+                &times;
+              </button>
+
+              <nav aria-label="Primary" className="w-full max-w-4xl mt-20">
                 <motion.ul
                   initial="hidden"
                   animate="show"
