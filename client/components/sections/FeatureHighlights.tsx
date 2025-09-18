@@ -2,20 +2,52 @@ import { motion } from "framer-motion";
 import { Brain, ShieldCheck, Zap, BarChart3, Gauge, Lock } from "lucide-react";
 
 const items = [
-  { icon: Brain, title: "GenAI Insights", desc: "Understand intent and surface answers in real time." },
-  { icon: ShieldCheck, title: "Privacy First", desc: "Governed access, zero data duplication." },
-  { icon: Zap, title: "Lightning Fast", desc: "GPU‑accelerated pipelines for sub‑second responses." },
-  { icon: BarChart3, title: "Business Impact", desc: "Tie insights to KPIs and measurable outcomes." },
-  { icon: Gauge, title: "Scales Effortlessly", desc: "Elastic architecture for global workloads." },
-  { icon: Lock, title: "Enterprise‑Ready", desc: "Compliance, auditability, and SSO integration." },
+  {
+    icon: Brain,
+    title: "GenAI Insights",
+    desc: "Understand intent and surface answers in real time.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Privacy First",
+    desc: "Governed access, zero data duplication.",
+  },
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    desc: "GPU‑accelerated pipelines for sub‑second responses.",
+  },
+  {
+    icon: BarChart3,
+    title: "Business Impact",
+    desc: "Tie insights to KPIs and measurable outcomes.",
+  },
+  {
+    icon: Gauge,
+    title: "Scales Effortlessly",
+    desc: "Elastic architecture for global workloads.",
+  },
+  {
+    icon: Lock,
+    title: "Enterprise‑Ready",
+    desc: "Compliance, auditability, and SSO integration.",
+  },
 ];
 
 export default function FeatureHighlights() {
-  const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
-  const item = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.35 } } };
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.08 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 12 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+  };
   return (
     <section className="mt-10 md:mt-14" aria-label="Feature highlights">
-      <h2 className="text-xl md:text-2xl font-semibold text-white">Platform Advantages</h2>
+      <h2 className="text-xl md:text-2xl font-semibold text-white">
+        Platform Advantages
+      </h2>
       <motion.div
         variants={container}
         initial="hidden"
@@ -26,7 +58,13 @@ export default function FeatureHighlights() {
         {items.map((it, i) => (
           <motion.div key={it.title} variants={item}>
             <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-card/70 backdrop-blur p-5 md:p-6 transition-shadow hover:shadow-[0_0_42px_rgba(0,212,255,0.22)]">
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{background:"radial-gradient(60%_60%_at_50%_50%, rgba(155,95,255,0.12), transparent), radial-gradient(40%_40%_at_70%_30%, rgba(0,212,255,0.10), transparent)"}} />
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{
+                  background:
+                    "radial-gradient(60%_60%_at_50%_50%, rgba(155,95,255,0.12), transparent), radial-gradient(40%_40%_at_70%_30%, rgba(0,212,255,0.10), transparent)",
+                }}
+              />
               <div className="relative z-10 flex items-start gap-3">
                 <motion.div
                   initial={{ rotate: 0 }}

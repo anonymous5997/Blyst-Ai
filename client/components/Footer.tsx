@@ -11,18 +11,31 @@ export default function Footer() {
               className="flex-1 md:w-72 rounded-md border border-white/10 bg-white/5 px-3 py-2 placeholder-white/50 focus:outline-none"
               aria-label="Email for newsletter"
             />
-            <button className="rounded-md bg-white/10 px-4 py-2 text-white hover:bg-white/20" aria-label="Subscribe">
+            <button
+              className="rounded-md bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+              aria-label="Subscribe"
+            >
               Subscribe
             </button>
           </form>
           <nav className="text-sm flex gap-4">
-            <a href="/" className="hover:text-white">Home</a>
-            <a href="/services" className="hover:text-white">Service</a>
-            <a href="/about" className="hover:text-white">About</a>
-            <a href="/contact" className="hover:text-white">Contact</a>
+            <a href="/" className="hover:text-white">
+              Home
+            </a>
+            <a href="/services" className="hover:text-white">
+              Service
+            </a>
+            <a href="/about" className="hover:text-white">
+              About
+            </a>
+            <a href="/contact" className="hover:text-white">
+              Contact
+            </a>
           </nav>
         </div>
-        <p className="mt-6 text-xs">© {new Date().getFullYear()} Blyst AI. All rights reserved.</p>
+        <p className="mt-6 text-xs">
+          © {new Date().getFullYear()} Blyst AI. All rights reserved.
+        </p>
       </div>
     </footer>
   );

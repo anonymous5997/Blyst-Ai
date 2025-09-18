@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const QUOTES = [
-  { q: "Blyst AI cut our decision time from days to minutes.", a: "VP Analytics, FinServe" },
-  { q: "Fastest path to insights we’ve deployed.", a: "Head of Data, Commerce" },
+  {
+    q: "Blyst AI cut our decision time from days to minutes.",
+    a: "VP Analytics, FinServe",
+  },
+  {
+    q: "Fastest path to insights we’ve deployed.",
+    a: "Head of Data, Commerce",
+  },
   { q: "Compliance‑friendly and genuinely helpful.", a: "CISO, Healthcare" },
 ];
 

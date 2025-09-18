@@ -40,14 +40,28 @@ export default function FloatingAsk() {
               className="absolute bottom-6 right-6 w-[92%] max-w-md rounded-2xl border border-white/10 bg-neutral-900 p-4 text-white shadow-xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-white/90 font-semibold">Chat with Blyst AI</h3>
+              <h3 className="text-white/90 font-semibold">
+                Chat with Blyst AI
+              </h3>
               <div className="mt-3 space-y-2 text-sm">
-                <div className="max-w-[85%] rounded-xl bg-white/10 px-3 py-2">How can I increase trial conversions?</div>
-                <div className="max-w-[90%] rounded-xl bg-gradient-to-r from-[#9b5fff]/10 to-[#00d4ff]/10 px-3 py-2 ml-auto">Try progressive profiling + prefilled fields; expect +12–18%.</div>
+                <div className="max-w-[85%] rounded-xl bg-white/10 px-3 py-2">
+                  How can I increase trial conversions?
+                </div>
+                <div className="max-w-[90%] rounded-xl bg-gradient-to-r from-[#9b5fff]/10 to-[#00d4ff]/10 px-3 py-2 ml-auto">
+                  Try progressive profiling + prefilled fields; expect +12–18%.
+                </div>
               </div>
-              <form onSubmit={(e)=>e.preventDefault()} className="mt-3 flex items-center gap-2">
-                <input className="flex-1 rounded-md border border-white/10 bg-white/5 px-3 py-2 placeholder-white/50 focus:outline-none" placeholder="Ask Blyst AI…" />
-                <button className="rounded-md bg-white/10 px-3 py-2 hover:bg-white/20">Send</button>
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="mt-3 flex items-center gap-2"
+              >
+                <input
+                  className="flex-1 rounded-md border border-white/10 bg-white/5 px-3 py-2 placeholder-white/50 focus:outline-none"
+                  placeholder="Ask Blyst AI…"
+                />
+                <button className="rounded-md bg-white/10 px-3 py-2 hover:bg-white/20">
+                  Send
+                </button>
               </form>
             </motion.div>
           </motion.div>
