@@ -3,6 +3,7 @@ import BrandWave from "@/components/BrandWave";
 import TypewriterText from "@/components/TypewriterText";
 import ExpandingCards from "@/components/ExpandingCards";
 import CognitxHeroClone from "@/components/CognitxHeroClone";
+import HorizontalCards from "@/components/HorizontalCards";
 
 export default function Index() {
   const insights = [
