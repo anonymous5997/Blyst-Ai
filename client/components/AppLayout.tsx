@@ -17,6 +17,7 @@ import {
 import { Home, RefreshCw, Bot, Info, Mail, Menu } from "lucide-react";
 import Particles from "@/components/Particles";
 import MenuOverlay from "@/components/MenuOverlay";
+import Footer from "@/components/Footer";
 import { ReactNode } from "react";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
@@ -35,6 +36,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
             </p>
           </header>
           <main className="p-4 md:p-8">{children}</main>
+          <Footer />
         </div>
         <div className="fixed right-4 top-4 z-[200] flex items-center gap-2">
           <span className="text-xs font-semibold tracking-wide text-white/90">

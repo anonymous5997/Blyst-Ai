@@ -4,6 +4,14 @@ import TypewriterText from "@/components/TypewriterText";
 import ExpandingCards from "@/components/ExpandingCards";
 import CognitxHeroClone from "@/components/CognitxHeroClone";
 import HorizontalCards from "@/components/HorizontalCards";
+import FeatureHighlights from "@/components/sections/FeatureHighlights";
+import ProductDemo from "@/components/sections/ProductDemo";
+import TrustedBar from "@/components/sections/TrustedBar";
+import WhyChoose from "@/components/sections/WhyChoose";
+import Testimonials from "@/components/sections/Testimonials";
+import Counters from "@/components/sections/Counters";
+import CTA from "@/components/sections/CTA";
+import FloatingAsk from "@/components/sections/FloatingAsk";
 
 export default function Index() {
   const insights = [
@@ -43,6 +51,16 @@ export default function Index() {
       <HorizontalCards />
 
       <ExpandingCards />
+
+      <FeatureHighlights />
+      <ProductDemo />
+      <TrustedBar />
+      <WhyChoose />
+      <Testimonials />
+      <Counters />
+      <CTA />
+
+      <FloatingAsk />
     </div>
   );
 }
