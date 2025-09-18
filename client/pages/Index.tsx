@@ -36,6 +36,8 @@ export default function Index() {
         <InsightsGrid insights={insights} />
       </section>
 
+      <CognitxHeroClone />
+
       <ExpandingCards />
     </div>
   );
