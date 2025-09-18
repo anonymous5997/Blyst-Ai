@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import BrandWave from "@/components/BrandWave";
 import TypewriterText from "@/components/TypewriterText";
 import ExpandingCards from "@/components/ExpandingCards";
+import CognitxHeroClone from "@/components/CognitxHeroClone";
 
 export default function Index() {
   const insights = [
