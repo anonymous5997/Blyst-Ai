@@ -26,7 +26,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <SidebarProvider defaultOpen={false}>
       <SidebarInset className="bg-black">
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-48 bg-[radial-gradient(circle_at_50%_-20%,rgba(139,92,246,0.35),rgba(0,0,0,0)_40%),radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.2),rgba(0,0,0,0)_40%),radial-gradient(circle_at_70%_30%,rgba(255,138,0,0.14),rgba(0,0,0,0)_40%)]" />
+        {/* <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-48 bg-[radial-gradient(circle_at_50%_-20%,rgba(139,92,246,0.35),rgba(0,0,0,0)_40%),radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.2),rgba(0,0,0,0)_40%),radial-gradient(circle_at_70%_30%,rgba(255,138,0,0.14),rgba(0,0,0,0)_40%)]" /> */}
         <Particles />
         <div className="app-content relative z-10">
           <header className="relative flex items-center justify-center py-3">
