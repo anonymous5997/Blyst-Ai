@@ -136,7 +136,8 @@
   .app-content {
     transition: filter 200ms ease;
   }
-  .menu-open .app-content {
+  .menu-open .app-content,
+  .modal-open .app-content {
     filter: blur(10px);
   }
 }
