@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function InsightsModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export default function InsightsModal({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     if (open) {
@@ -47,12 +53,21 @@ export default function InsightsModal({ open, onClose }: { open: boolean; onClos
               </div>
               <ul className="space-y-3 text-sm text-white/80">
                 <li>Personalized, contextualized, anticipatory analytics.</li>
-                <li>Privacy & security: no data duplication; governed access.</li>
+                <li>
+                  Privacy & security: no data duplication; governed access.
+                </li>
                 <li>Unified insights across sources; no data silos.</li>
-                <li>Deep analytics: root cause, hidden patterns, predicted trends.</li>
+                <li>
+                  Deep analytics: root cause, hidden patterns, predicted trends.
+                </li>
               </ul>
               <div className="mt-6 flex justify-end">
-                <button onClick={onClose} className="rounded-md bg-white/10 px-4 py-2 text-sm hover:bg-white/20">Close</button>
+                <button
+                  onClick={onClose}
+                  className="rounded-md bg-white/10 px-4 py-2 text-sm hover:bg-white/20"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </motion.div>

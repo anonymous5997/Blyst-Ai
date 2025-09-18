@@ -44,8 +44,12 @@ export default function HorizontalCards() {
             className={`snap-start shrink-0 w-[85%] sm:w-[60%] md:w-[32%] rounded-xl border border-white/10 bg-gradient-to-r ${c.bg} p-0 text-left hover:brightness-110 transition`}
           >
             <div className="rounded-xl bg-black/70 backdrop-blur p-5 md:p-6 h-full">
-              <h3 className="text-xl md:text-2xl font-extrabold text-white">{c.title}</h3>
-              <p className="mt-2 text-white/80 text-sm md:text-base">{c.subtitle}</p>
+              <h3 className="text-xl md:text-2xl font-extrabold text-white">
+                {c.title}
+              </h3>
+              <p className="mt-2 text-white/80 text-sm md:text-base">
+                {c.subtitle}
+              </p>
             </div>
           </motion.button>
         ))}

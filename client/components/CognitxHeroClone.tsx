@@ -26,8 +26,10 @@ export default function CognitxHeroClone() {
               transition={{ duration: 0.5, delay: 0.08 }}
               className="mt-4 text-sm md:text-base text-neutral-700 max-w-prose"
             >
-              Our flagship AI advisor for data analytics turns complex business data into actionable insight.
-              Ask natural-language questions and get accurate, instant answers to make faster, data‑driven decisions.
+              Our flagship AI advisor for data analytics turns complex business
+              data into actionable insight. Ask natural-language questions and
+              get accurate, instant answers to make faster, data‑driven
+              decisions.
             </motion.p>
           </div>
 
@@ -39,7 +41,10 @@ export default function CognitxHeroClone() {
               transition={{ duration: 0.5 }}
               className="relative h-40 w-40 md:h-56 md:w-56 rounded-full border border-black/10"
             >
-              <span className="absolute inset-0 m-auto block h-4 w-4 rounded-full border-2 border-black/60" aria-hidden />
+              <span
+                className="absolute inset-0 m-auto block h-4 w-4 rounded-full border-2 border-black/60"
+                aria-hidden
+              />
             </motion.div>
           </div>
         </div>
