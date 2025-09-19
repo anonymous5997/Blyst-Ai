@@ -15,7 +15,7 @@ export default function Contact() {
       {/* Panel 1 */}
       <section className="snap-start h-svh grid place-items-center bg-black text-center">
         <div>
-          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="text-4xl md:text-7xl font-extrabold text-white">LET'S CONNECT</motion.h1>
+          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="text-4xl md:text-7xl font-extrabold text-white">HELLO STRANGER</motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.4 }} className="mt-2 text-white/70">CONTACT US</motion.p>
           <div className="mt-8 flex justify-center">
             <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }} aria-hidden>
