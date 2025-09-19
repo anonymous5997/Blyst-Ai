@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { motion } from "framer-motion";
 import {
   Globe,
   Bot,
@@ -13,53 +12,20 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const services = [
-  {
-    icon: Globe,
-    title: "Web Development",
-    desc: "High-performance, responsive web apps with modern stacks.",
-  },
-  {
-    icon: Bot,
-    title: "GenAI Solutions",
-    desc: "Integrate conversational AI and automation seamlessly.",
-  },
-  {
-    icon: BarChart3,
-    title: "Insights from Data",
-    desc: "Transform raw data into actionable intelligence.",
-  },
-  {
-    icon: Brain,
-    title: "Custom AI/ML Models",
-    desc: "Tailored models built for your domain and goals.",
-  },
-  {
-    icon: Search,
-    title: "SEO & Digital Marketing",
-    desc: "Drive discoverability and growth across channels.",
-  },
-  {
-    icon: LineChart,
-    title: "Revenue Analysis",
-    desc: "Track and optimize revenue with real-time dashboards.",
-  },
-  {
-    icon: Activity,
-    title: "Business Intelligence",
-    desc: "End-to-end BI with secure pipelines and reports.",
-  },
+  { icon: Globe, title: "Web Development", desc: "High-performance, responsive web apps with modern stacks." },
+  { icon: Bot, title: "GenAI Solutions", desc: "Integrate conversational AI and automation seamlessly." },
+  { icon: BarChart3, title: "Insights from Data", desc: "Transform raw data into actionable intelligence." },
+  { icon: Brain, title: "Custom AI/ML Models", desc: "Tailored models built for your domain and goals." },
+  { icon: Search, title: "SEO & Digital Marketing", desc: "Drive discoverability and growth across channels." },
+  { icon: LineChart, title: "Revenue Analysis", desc: "Track and optimize revenue with real-time dashboards." },
+  { icon: Activity, title: "Business Intelligence", desc: "End-to-end BI with secure pipelines and reports." },
 ];
 
 export default function Services() {
   return (
     <div className="mx-auto max-w-7xl">
-      <h1 className="text-3xl md:text-5xl font-extrabold text-gradient">
-        Services
-      </h1>
-      <p className="mt-3 text-white/70 max-w-2xl">
-        Expertise across full-stack engineering and applied AI to accelerate
-        outcomes.
-      </p>
+      <h1 className="text-3xl md:text-5xl font-extrabold text-gradient">Services</h1>
+      <p className="mt-3 text-white/70 max-w-2xl">Expertise across full-stack engineering and applied AI to accelerate outcomes.</p>
 
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {services.map((s, i) => (
@@ -82,6 +48,7 @@ export default function Services() {
           </motion.div>
         ))}
       </div>
+
       {/* Detailed sections */}
       <div className="mt-12 space-y-10">
         {services.map((s, i) => (
