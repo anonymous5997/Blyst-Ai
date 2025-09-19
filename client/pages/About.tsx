@@ -85,7 +85,25 @@ export default function About() {
             Team & Culture
           </motion.h3>
           <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {[0,1,2,3,4,5,6,7].map((i) => (
+            {[
+              "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=800&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1541534401786-2077eed87a72?q=80&w=800&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop",
+            ].map((src, idx) => (
+              <motion.div
+                key={src}
+                initial={{ opacity: 0, x: idx % 2 ? 20 : -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5, delay: idx * 0.05, ease }}
+                className="relative overflow-hidden rounded-xl border border-white/10 aspect-[4/3]"
+                aria-label="Team photo"
+              >
+                <img src={src} alt="Team" className="h-full w-full object-cover" />
+                <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity" style={{background:"radial-gradient(50%_60%_at_50%_40%, rgba(155,95,255,0.18), transparent), radial-gradient(40%_40%_at_70%_30%, rgba(0,212,255,0.15), transparent)"}} />
+              </motion.div>
+            ))}
+            {[0,1,2,4,5].map((i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: i % 2 ? 20 : -20, y: i % 3 === 0 ? 10 : -10 }}
