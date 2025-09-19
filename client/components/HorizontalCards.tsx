@@ -36,7 +36,12 @@ export default function HorizontalCards() {
         {cards.map((c, i) => (
           <motion.button
             key={c.id}
-            onClick={() => i === 1 && setOpen(true)}
+            type="button"
+            aria-haspopup="dialog"
+            aria-controls="insights-modal"
+            onClick={() => {
+              if (i === 1) setOpen(true);
+            }}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
