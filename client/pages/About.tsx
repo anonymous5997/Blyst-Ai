@@ -30,7 +30,8 @@ export default function About() {
           transition={{ duration: 0.6, ease }}
           className="max-w-[960px] text-center text-white/85 text-xl md:text-3xl leading-tight"
         >
-          COMBINES DEEP AI KNOWLEDGE WITH HANDS‑ON EXPERIENCE BUILDING SCALABLE, SECURE, AND IMPACTFUL AI SYSTEMS FOR ENTERPRISES.
+          COMBINES DEEP AI KNOWLEDGE WITH HANDS‑ON EXPERIENCE BUILDING SCALABLE,
+          SECURE, AND IMPACTFUL AI SYSTEMS FOR ENTERPRISES.
         </motion.p>
       </section>
 
@@ -99,21 +100,41 @@ export default function About() {
                 className="relative overflow-hidden rounded-xl border border-white/10 aspect-[4/3]"
                 aria-label="Team photo"
               >
-                <img src={src} alt="Team" className="h-full w-full object-cover" />
-                <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity" style={{background:"radial-gradient(50%_60%_at_50%_40%, rgba(155,95,255,0.18), transparent), radial-gradient(40%_40%_at_70%_30%, rgba(0,212,255,0.15), transparent)"}} />
+                <img
+                  src={src}
+                  alt="Team"
+                  className="h-full w-full object-cover"
+                />
+                <div
+                  className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity"
+                  style={{
+                    background:
+                      "radial-gradient(50%_60%_at_50%_40%, rgba(155,95,255,0.18), transparent), radial-gradient(40%_40%_at_70%_30%, rgba(0,212,255,0.15), transparent)",
+                  }}
+                />
               </motion.div>
             ))}
-            {[0,1,2,4,5].map((i) => (
+            {[0, 1, 2, 4, 5].map((i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: i % 2 ? 20 : -20, y: i % 3 === 0 ? 10 : -10 }}
+                initial={{
+                  opacity: 0,
+                  x: i % 2 ? 20 : -20,
+                  y: i % 3 === 0 ? 10 : -10,
+                }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.5, delay: (i % 4) * 0.05, ease }}
                 className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 aspect-[4/3]"
                 aria-label="Team photo"
               >
-                <div className="absolute inset-0" style={{background:"radial-gradient(50%_60%_at_50%_40%, rgba(155,95,255,0.18), transparent), radial-gradient(40%_40%_at_70%_30%, rgba(0,212,255,0.15), transparent)"}} />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(50%_60%_at_50%_40%, rgba(155,95,255,0.18), transparent), radial-gradient(40%_40%_at_70%_30%, rgba(0,212,255,0.15), transparent)",
+                  }}
+                />
               </motion.div>
             ))}
           </div>
@@ -129,8 +150,15 @@ export default function About() {
           transition={{ duration: 0.6, ease }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white">LET'S TALK</h2>
-          <a href="/contact" className="mt-6 inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 font-semibold hover:opacity-90 transition">Start a Conversation</a>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white">
+            LET'S TALK
+          </h2>
+          <a
+            href="/contact"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 font-semibold hover:opacity-90 transition"
+          >
+            Start a Conversation
+          </a>
         </motion.div>
       </section>
     </div>
