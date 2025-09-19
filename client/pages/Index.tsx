@@ -12,6 +12,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import Counters from "@/components/sections/Counters";
 import CTA from "@/components/sections/CTA";
 import FloatingAsk from "@/components/sections/FloatingAsk";
+import { motion } from "framer-motion";
 
 export default function Index() {
   const insights = [
@@ -65,7 +66,6 @@ export default function Index() {
   );
 }
 
-import { motion } from "framer-motion";
 function InsightsGrid({ insights }: { insights: string[] }) {
   const container = {
     hidden: { opacity: 0 },
