@@ -27,6 +27,7 @@ export default function InsightsModal({
       {open && (
         <motion.div
           key="modal"
+          id="insights-modal"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
