@@ -31,7 +31,7 @@ export default function InsightsModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[190] bg-black/80 backdrop-blur-[14px]"
+          className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-[14px] flex items-center justify-center p-4"
           onClick={onClose}
           role="dialog"
           aria-modal="true"
@@ -42,7 +42,7 @@ export default function InsightsModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-20 w-[92%] max-w-3xl rounded-2xl border border-white/10 bg-neutral-900 text-white shadow-[0_32px_120px_rgba(0,0,0,0.6)]"
+            className="w-full max-w-3xl rounded-2xl border border-white/10 bg-neutral-900 text-white shadow-[0_32px_120px_rgba(0,0,0,0.6)]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-4 md:p-6">
