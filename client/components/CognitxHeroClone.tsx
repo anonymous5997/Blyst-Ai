@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 
+import BrandWave from "@/components/BrandWave";
+
 export default function CognitxHeroClone() {
   return (
     <section id="clone-hero" className="mt-12 md:mt-16">
-      <div className="rounded-2xl bg-white text-black px-6 md:px-10 py-10 md:py-14 shadow-[0_10px_60px_rgba(0,0,0,0.35)]">
+      <div className="rounded-2xl bg-black text-white px-6 md:px-10 py-10 md:py-14 border border-white/10 shadow-[0_10px_60px_rgba(0,0,0,0.45)]">
         <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1">
             <motion.h2
@@ -24,7 +26,7 @@ export default function CognitxHeroClone() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="mt-4 text-sm md:text-base text-neutral-700 max-w-prose"
+              className="mt-4 text-sm md:text-base text-white/70 max-w-prose"
             >
               Our flagship AI advisor for data analytics turns complex business
               data into actionable insight. Ask natural-language questions and
@@ -39,12 +41,8 @@ export default function CognitxHeroClone() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.5 }}
-              className="relative h-40 w-40 md:h-56 md:w-56 rounded-full border border-black/10"
             >
-              <span
-                className="absolute inset-0 m-auto block h-4 w-4 rounded-full border-2 border-black/60"
-                aria-hidden
-              />
+              <BrandWave size={260} />
             </motion.div>
           </div>
         </div>
