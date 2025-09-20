@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // You MUST replace 'YOUR_NETLIFY_FRONTEND_URL' with the actual URL 
 // (e.g., https://blyst-ai-frontend.netlify.app) you get after deploying your frontend.
 const allowedOrigins = [
-    'https://your-frontend-domain.netlify.app', // Replace with your actual Netlify URL
+    'https://68ce48db6f667a3fe0ba8679--blystai.netlify.app/, // Replace with your actual Netlify URL
     'https://blyst-ai.onrender.com', // Render backend URL
     'http://localhost:8080', // For local development testing
 ];
