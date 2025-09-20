@@ -57,7 +57,7 @@ const BlystAIChat = () => {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask Blyst AI..."
-                    className="flex-grow p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none focus:border-indigo-500"
+                    className="flex-grow p-3 border border-gray-700 rounded-lg bg-black text-white focus:outline-none focus:border-indigo-500"
                     disabled={isLoading}
                 />
                 <button 

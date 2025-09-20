@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import TypewriterText from "@/components/TypewriterText";
 // 1. 💥 IMPORT THE CHAT COMPONENT 💥
-import BlystAIChat from "./BlystAIChat"; // Adjust path if needed
+import BlystAIChat from "@/components/BlystAIchat.jsx";
 
 export default function ExpandingCards() {
   const [open, setOpen] = useState(false);
