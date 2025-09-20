@@ -25,9 +25,14 @@ export default function Index() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <section className="relative flex flex-col items-center gap-4 md:gap-6 pt-8 md:pt-12">
+      {/* CORRECTION APPLIED HERE: Added 'mx-auto' to the section to ensure it is centered on the page */}
+      <section className="relative flex flex-col items-center gap-4 md:gap-6 pt-8 md:pt-12 mx-auto">
+        
+        {/* The BrandWave component likely contains the animated ring and BLYST AI text. 
+            Its content needs to be rendered responsively to look high-quality. */}
         <BrandWave size={340} />
-        <div className="text-center">
+        
+        <div className="text-center mx-auto"> {/* Added 'mx-auto' here as well for good measure */}
           <h1 className="text-2xl md:text-4xl font-extrabold text-white">
             Cognitive Interfaces for Business
           </h1>
@@ -42,7 +47,7 @@ export default function Index() {
           VIEW MORE
         </a>
       </section>
-
+      {/* ... rest of the index.tsx component remains the same ... */}
       <section aria-label="AI Insights" className="mt-4 md:mt-6">
         <InsightsGrid insights={insights} />
       </section>
