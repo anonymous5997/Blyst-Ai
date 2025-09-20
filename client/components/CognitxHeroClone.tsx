@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
+import { useState } from "react"; // Import useState for conditional rendering
 
 // You MUST replace this path with the actual path to your video file (e.g., logo-animation.mp4)
 import AnimatedLogoVideo from "/Blyst Ai.mp4"; 
 
 export default function CognitxHeroClone() {
+  // State to handle if the video fails to load (e.g., wrong path or unsupported format)
+  const [videoLoaded, setVideoLoaded] = useState(true);
+
   return (
     <section id="clone-hero" className="mt-12 md:mt-16">
       <div className="rounded-2xl bg-black text-white px-6 md:px-10 py-10 md:py-14 border border-white/10 shadow-[0_10px_60px_rgba(0,0,0,0.45)]">
@@ -46,15 +50,29 @@ export default function CognitxHeroClone() {
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.5 }}
             >
-              {/* VIDEO LOGO REPLACEMENT */}
-              <video
-                src={AnimatedLogoVideo}
-                className="w-full max-w-[260px] h-auto rounded-xl" // Size controlled here, matching original 'size={260}'
-                autoPlay // Start playing automatically
-                loop // Keep looping the animation
-                muted // Mute is required for most browser policies for autoplay
-                playsInline // Good for mobile compatibility
-              />
+              {/* Conditional rendering: Only show video if it's expected to load */}
+              {videoLoaded ? (
+                <video
+                  src={AnimatedLogoVideo}
+                  className="w-full max-w-[260px] h-auto rounded-xl" 
+                  autoPlay 
+                  loop 
+                  muted // Mute is ESSENTIAL for autoPlay on most mobile devices
+                  playsInline // Ensures video plays inline on iOS, preventing full-screen takeover
+                  
+                  // **CRITICAL FIX**: Hides the video element if it fails to load, 
+                  // preventing a broken link/huge play button icon from dominating the space.
+                  onError={() => {
+                    console.error("Failed to load video:", AnimatedLogoVideo);
+                    setVideoLoaded(false); 
+                  }}
+                />
+              ) : (
+                // Fallback content if the video fails to load
+                <div className="w-[260px] h-[260px] flex items-center justify-center bg-gray-900 rounded-xl text-white/50 border border-white/10">
+                    <p>Logo Animation</p>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
