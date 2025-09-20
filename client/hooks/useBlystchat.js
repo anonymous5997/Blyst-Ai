@@ -2,9 +2,13 @@
 
 import { useState, useCallback } from 'react';
 
-// Use environment variable for the API URL
-// NOTE: For local testing, ensure you have VITE_PUBLIC_API_URL set in client/.env
-const BASE_URL = import.meta.env.VITE_PUBLIC_API_URL || 'http://localhost:3001'; 
+// FIX: Define the live Render URL as the default production fallback.
+// This ensures that when VITE_PUBLIC_API_URL is NOT set (e.g., in Netlify production), 
+// it correctly points to the public backend service.
+const DEFAULT_PROD_URL = 'https://blyst-ai.onrender.com';
+
+// Use environment variable for the API URL, falling back to the live Render URL.
+const BASE_URL = import.meta.env.VITE_PUBLIC_API_URL || DEFAULT_PROD_URL; 
 const API_ENDPOINT = `${BASE_URL}/api/groq-ask`;
 
 const useBlystchat = () => {
@@ -45,7 +49,8 @@ const useBlystchat = () => {
 
             if (!response.ok) {
                 // If the response is not OK (e.g., 500 server error)
-                throw new Error(`Server responded with status: ${response.status} ${response.statusText}`);
+                // We show the status and the API_ENDPOINT for easy debugging
+                throw new Error(`Server responded with status: ${response.status} ${response.statusText}. Target: ${API_ENDPOINT}`);
             }
 
             if (!response.body) {
@@ -73,7 +78,9 @@ const useBlystchat = () => {
 
         } catch (err) {
             console.error('Chat error:', err);
-            setError(`Failed to get response: ${err.message}. Check your CORS configuration.`);
+            // Show a more specific error message based on the failure
+            setError(`Failed to connect to AI Advisor. Reason: ${err.message}.`);
+            
             // Remove the last message (the placeholder) if streaming failed immediately
             setMessages(prev => prev.slice(0, prev.length - 1));
         } finally {
