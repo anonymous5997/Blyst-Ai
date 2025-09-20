@@ -1,45 +1,58 @@
-import { useState } from 'react';
+// --- File: client/src/hooks/useBlystchat.js (FINAL FIX) ---
 
-// CRITICAL: Point to the Express backend port 3001
-const API_ENDPOINT = 'http://localhost:3001/api/groq-ask';
+import { useState, useCallback } from 'react';
 
-export const useBlystchat = () => { // Ensure this is lowercase 'c'
+// Use environment variable for the API URL
+// NOTE: For local testing, ensure you have VITE_PUBLIC_API_URL set in client/.env
+const BASE_URL = import.meta.env.VITE_PUBLIC_API_URL || 'http://localhost:3001'; 
+const API_ENDPOINT = `${BASE_URL}/api/groq-ask`;
+
+const useBlystchat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const handleSend = async (e) => {
-        if (e) e.preventDefault();
-        const trimmedInput = input.trim();
-        if (!trimmedInput || isLoading) return;
+    const handleSend = useCallback(async (e) => {
+        e.preventDefault();
+        const userQuestion = input.trim();
 
-        const userMessage = { role: 'user', content: trimmedInput };
-        
-        // 1. Add user message and empty AI placeholder using a single update
-        setMessages(prev => [
-            ...prev, 
-            userMessage, 
-            { role: 'ai', content: '' } // The empty AI message
-        ]);
-        
-        setInput('');
-        setIsLoading(true);
+        if (!userQuestion) return;
+
+        // 1. Clear error and set loading state
         setError(null);
+        setIsLoading(true);
+
+        // 2. Add user message to state
+        const newUserMessage = { role: 'user', content: userQuestion };
+        setMessages(prev => [...prev, newUserMessage]);
+        setInput(''); // Clear input box
+
+        // 3. Prepare for AI response stream
+        let aiResponseContent = '';
+        const aiMessagePlaceholder = { role: 'ai', content: '' };
+        setMessages(prev => [...prev, aiMessagePlaceholder]);
 
         try {
+            // 4. Fetch the stream from the backend
             const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question: trimmedInput }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question: userQuestion }),
             });
 
-            if (!response.ok || !response.body) {
-                const errorText = await response.text();
-                // Throw an error that includes the status code for debugging
-                throw new Error(`Server Error (${response.status}): ${errorText || 'Non-streamable error.'}`);
+            if (!response.ok) {
+                // If the response is not OK (e.g., 500 server error)
+                throw new Error(`Server responded with status: ${response.status} ${response.statusText}`);
             }
 
+            if (!response.body) {
+                throw new Error("No response body received from the server.");
+            }
+
+            // 5. Read the stream chunk by chunk
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             
@@ -48,45 +61,27 @@ export const useBlystchat = () => { // Ensure this is lowercase 'c'
                 if (done) break;
 
                 const chunk = decoder.decode(value, { stream: true });
-                
-                // 💥 FIX: Use the functional update to safely append the chunk
-                setMessages(prev => {
-                    // Create a new array from the previous state
-                    const newMessages = [...prev];
-                    const lastMessageIndex = newMessages.length - 1;
+                aiResponseContent += chunk;
 
-                    // This MUST be the AI message we just added (the last one)
-                    if (newMessages[lastMessageIndex].role === 'ai') {
-                        newMessages[lastMessageIndex].content += chunk;
-                    }
+                // Update the last message (the AI placeholder) with the accumulating content
+                setMessages(prev => {
+                    const newMessages = [...prev];
+                    newMessages[newMessages.length - 1].content = aiResponseContent;
                     return newMessages;
                 });
             }
 
         } catch (err) {
-            console.error('Frontend Fetch Error:', err);
-            
-            // Clean up: Replace the empty AI message with the error message
-            setMessages(prev => {
-                const newMessages = [...prev];
-                const lastMessageIndex = newMessages.length - 1;
-                
-                if (newMessages[lastMessageIndex].role === 'ai') {
-                    newMessages[lastMessageIndex] = { 
-                        role: 'error', 
-                        // Include the actual error message for better debugging
-                        content: `Error: Connection failed. Details: ${err.message}`
-                    };
-                }
-                return newMessages;
-            });
-            // Set the main error state
-            setError('Sorry, I can\'t connect to the AI. See console for details.');
+            console.error('Chat error:', err);
+            setError(`Failed to get response: ${err.message}. Check your CORS configuration.`);
+            // Remove the last message (the placeholder) if streaming failed immediately
+            setMessages(prev => prev.slice(0, prev.length - 1));
         } finally {
-            // CRITICAL: Release the button regardless of success or failure
-            setIsLoading(false); 
+            setIsLoading(false);
         }
-    };
+    }, [input, setInput, setMessages, setIsLoading, setError]);
 
     return { messages, input, setInput, handleSend, isLoading, error };
 };
+
+export { useBlystchat };

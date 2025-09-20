@@ -1,26 +1,39 @@
 // --- File: backend/server.js (FINAL CORRECTED VERSION) ---
+
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config'; // To load GROQ_API_KEY from .env
+import 'dotenv/config'; // Loads .env variables like PORT (for local)
 import { streamText } from 'ai';
-import { groq } from '@ai-sdk/groq'; // This is the groq model provider function
+import { groq } from '@ai-sdk/groq'; 
 
-// 🚨 CRITICAL FIX: Explicitly set the environment variable
-// This bypasses the file-loading issue and ensures the key is available.
-// In a production app, you should use a secure method to manage keys.
-// Replace the placeholder with your actual key.
-process.env.GROQ_API_KEY = "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"
 // 1. Setup
 const app = express();
-const PORT = process.env.PORT || 3001;
+// Render will automatically set PORT to 10000. For local, it defaults to 3001.
+const PORT = process.env.PORT || 3001; 
 
 // Middleware
-app.use(express.json()); // For parsing application/json bodies
-app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 
-// 2. CORS Configuration 
+// 2. CORS Configuration (CRITICAL FIX: Allow Netlify URL)
+// You MUST replace 'YOUR_NETLIFY_FRONTEND_URL' with the actual URL 
+// (e.g., https://blyst-ai-frontend.netlify.app) you get after deploying your frontend.
+const allowedOrigins = [
+    'https://blyst-ai.onrender.com', 
+    'http://localhost:8080', // For local development testing
+];
+
 app.use(cors({
-    origin: 'http://localhost:8080', // Adjust if your frontend port is different
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or server-to-server) and the allowed origins
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            // Log the blocked origin for debugging
+            console.warn(`CORS blocked request from origin: ${origin}`);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: 'POST',
     credentials: true,
 }));
@@ -44,13 +57,19 @@ app.post('/api/groq-ask', async (req, res) => {
 
         console.log(`Received question: ${question}`);
 
+        // Get the API key from the environment (set on Render)
+        const apiKey = process.env.GROQ_API_KEY;
+        if (!apiKey) {
+            throw new Error("GROQ_API_KEY is not set in environment variables.");
+        }
+
         // Define the BLYST persona and model
         const systemInstruction = "You are a concise business intelligence advisor named BLYST. Give short, data-driven, and actionable advice. Always respond in the format: <Answer>: [Your concise response]";
         const modelId = 'llama-3.1-8b-instant'; 
 
-        // The streamText function will now correctly read the GROQ_API_KEY from process.env
+        // The groq() function will automatically use the GROQ_API_KEY from process.env
         const result = await streamText({
-            model: groq(modelId), // Correct syntax for @ai-sdk/groq
+            model: groq(modelId), 
             system: systemInstruction,
             prompt: question,
             config: {
@@ -67,12 +86,9 @@ app.post('/api/groq-ask', async (req, res) => {
         res.end();
         
     } catch (error) {
-        // --- CRITICAL ERROR LOGGING ---
         console.error('💥 Groq API Error:', error.message);
-        // -----------------------------
         
-        // Write the error message to the stream before ending
-        const errorMessage = `\nError: Failed to connect to BLYST AI Advisor. Details: ${error.message}. Check API key and server console.`;
+        const errorMessage = `\nError: Failed to connect to BLYST AI Advisor. Details: ${error.message}.`;
         res.write(errorMessage);
         res.end();
     }

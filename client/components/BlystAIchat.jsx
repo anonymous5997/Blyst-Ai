@@ -1,8 +1,8 @@
-// --- File: BlystAIChat.jsx (FINAL FIX) ---
-import React from 'react';
-import { useBlystchat } from '../hooks/useBlystchat'; // Ensure this path is correct
+// --- File: client/src/components/BlystAIChat.jsx (FINAL FIX) ---
 
-// 🛑 REMOVED: const [currentInput, setCurrentInput] = useState(''); - This was illegal!
+import React from 'react';
+// 🚨 IMPORTANT: Ensure this path is correct for your project structure
+import { useBlystchat } from '../hooks/useBlystchat'; 
 
 // Function to clean the output text (remove the <Answer>: prefix)
 const cleanAnswer = (content) => {
@@ -14,7 +14,6 @@ const cleanAnswer = (content) => {
 
 const BlystAIChat = () => {
     // Use the custom chat hook
-    // The 'input' and 'setInput' variables from the hook are the correct ones to use.
     const { messages, input, setInput, handleSend, isLoading, error } = useBlystchat();
 
     return (
@@ -55,11 +54,10 @@ const BlystAIChat = () => {
             <form onSubmit={handleSend} className="input-form flex gap-2">
                 <input
                     type="text"
-                    // 🛑 CORRECT BINDING: Use 'input' and 'setInput' from the hook once.
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask Blyst AI..."
-                    className="flex-grow p-3 border border-gray-700 rounded-lg bg-gray-800 text-black focus:outline-none focus:border-indigo-500"
+                    className="flex-grow p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none focus:border-indigo-500"
                     disabled={isLoading}
                 />
                 <button 
