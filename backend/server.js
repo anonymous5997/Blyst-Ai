@@ -15,11 +15,9 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
-// 2. CORS Configuration (CRITICAL FIX: Allow Netlify URL)
-// You MUST replace 'YOUR_NETLIFY_FRONTEND_URL' with the actual URL 
-// (e.g., https://blyst-ai-frontend.netlify.app) you get after deploying your frontend.
+// 2. CORS Configuration (CRITICAL FIX: Allow the official blystai.com URL)
 const allowedOrigins = [
-    'https://68ce48db6f667a3fe0ba8679--blystai.netlify.app/, // Replace with your actual Netlify URL
+    'https://blystai.com', // ⬅️ The FIX for the CORS error
     'https://blyst-ai.onrender.com', // Render backend URL
     'http://localhost:8080', // For local development testing
 ];
