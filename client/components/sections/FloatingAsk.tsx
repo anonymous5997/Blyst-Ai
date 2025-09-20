@@ -3,7 +3,7 @@ import { MessageSquare, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 // Corrected import path (assuming it now works for your file structure)
-import BlystAIChat from "../BlystAIChat"; // Assuming ../ui/BlystAIChat based on previous successful path
+import BlystAIChat from "../BlystAIchat"; // Assuming ../ui/BlystAIChat based on previous successful path
 
 export default function FloatingAsk() {
   const [open, setOpen] = useState(false);
