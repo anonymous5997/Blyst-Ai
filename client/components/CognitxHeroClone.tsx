@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 // You MUST replace this path with the actual path to your video file (e.g., logo-animation.mp4)
-import AnimatedLogoVideo from "/public/Blyst Ai.mp4"; 
+import AnimatedLogoVideo from "/Blyst Ai.mp4"; 
 
 export default function CognitxHeroClone() {
   return (

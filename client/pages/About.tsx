@@ -73,7 +73,7 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* Section 4: Team & Culture */}
+      {/* Section 4: Team & Culture
       <section className="snap-start h-svh px-6 grid content-center bg-black">
         <div className="mx-auto max-w-6xl">
           <motion.h3
@@ -139,7 +139,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Section 5: CTA */}
       <section className="snap-start h-svh grid place-items-center px-6 bg-black">

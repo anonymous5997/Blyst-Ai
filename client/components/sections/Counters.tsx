@@ -30,7 +30,7 @@ function useCount(to: number, duration = 2000) {
 export default function Counters() {
   const a = useCount(10000);
   const b = useCount(999); // 99.9% as 999/10
-  const c = useCount(120);
+  const c = useCount(6);
   return (
     <section className="mt-12 md:mt-16" aria-label="Achievements">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-white">

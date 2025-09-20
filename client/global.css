@@ -138,7 +138,7 @@
   }
   .menu-open .app-content,
   .modal-open .app-content {
-    filter: blur(10px);
+    /* filter: blur(10px); */
   }
 }
 

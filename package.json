@@ -21,8 +21,13 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "dotenv": "^17.2.1",
+    "@ai-sdk/groq": "^2.0.20",
+    "ai": "^5.0.47",
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "firebase": "^12.3.0",
+    "groq-sdk": "^0.32.0",
+    "mongodb": "^6.20.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
@@ -99,5 +104,19 @@
     "vite": "^7.1.2",
     "vitest": "^3.2.4"
   },
-  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
+  "version": "1.0.0",
+  "description": "",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anonymous5997/Blyst-Ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anonymous5997/Blyst-Ai/issues"
+  },
+  "homepage": "https://github.com/anonymous5997/Blyst-Ai#readme"
 }

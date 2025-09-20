@@ -5,10 +5,44 @@ import { Mail, MapPin, Phone, ChevronDown } from "lucide-react";
 export default function Contact() {
   const [captcha, setCaptcha] = useState(0);
   const [valid, setValid] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     setValid(captcha === 4);
   }, [captcha]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxHOPzCsLWeWklf8LdXAR_JWJXdD09x47B9IZzPfgNTGNnGFf2N6u0LJfieVu8btjBa/exec",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        setMessage("✅ Message sent successfully!");
+        form.reset();
+        setCaptcha(0);
+      } else {
+        setMessage("❌ Failed to send message. Try again later.");
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage("⚠️ Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="h-[calc(100svh-4rem)] md:h-[calc(100svh-6rem)] overflow-y-auto snap-y snap-mandatory scroll-smooth">
@@ -66,7 +100,7 @@ export default function Contact() {
           </motion.p>
 
           <motion.form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -134,14 +168,18 @@ export default function Contact() {
                   />
                 </div>
                 <button
-                  disabled={!valid}
+                  disabled={!valid || loading}
                   className="rounded-lg bg-white/10 px-6 py-2 text-white backdrop-blur hover:bg-white/20 transition shadow-[0_0_24px_rgba(0,212,255,0.15)] disabled:opacity-50"
                 >
-                  SUBMIT
+                  {loading ? "Sending..." : "SUBMIT"}
                 </button>
               </div>
             </div>
           </motion.form>
+
+          {message && (
+            <p className="mt-4 text-center text-sm text-white/80">{message}</p>
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -151,13 +189,15 @@ export default function Contact() {
             className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-white/80"
           >
             <div className="flex items-center gap-2">
-              <Mail className="size-4" /> contact@blyst.ai
+              <Mail className="size-4" /> info@blystai.com
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="size-4" /> 123 Your Street, Your City, Country
+              <MapPin className="size-4" /> Bhubaneswar , Odisha , India
             </div>
             <div className="flex items-center gap-2">
-              <Phone className="size-4" /> +1 (555) 123‑4567
+              <Phone className="size-6" />
+              <span>+91 7377173717 </span>
+              <span>+91 7377170717</span>
             </div>
           </motion.div>
         </div>
