@@ -147,9 +147,9 @@
   }
   /* LOGO CONTAINER FOR PERFECT CENTERING */
   .logo-container {
-    @apply flex items-center justify-center w-full min-h-[220px] max-w-full relative;
-    margin-left: auto;
-    margin-right: auto;
+    @apply flex items-center justify-center mx-auto aspect-square relative w-full;
+    margin-left: 340px;
+    margin-right: 200px;
   }
   /* LOGO VIDEO/VISIBILITY FIX FOR MOBILE */
   .logo-fade {

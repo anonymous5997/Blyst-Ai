@@ -23,45 +23,31 @@ export default function BrandWave({
   }, [size]);
 
   return (
+    // Perfectly square parent, always centered
     <div
-      className={`flex items-center justify-center w-full max-w-[${size}px] min-h-[${size}px] mx-auto relative select-none ${className}`}
+      className={`logo-container mx-auto aspect-square relative select-none ${className}`}
+      style={{ maxWidth: size, minWidth: 200 }}
       onMouseEnter={() => setBoost(true)}
       onMouseLeave={() => setBoost(false)}
       onClick={() => setBoost((b) => !b)}
       role="img"
       aria-label="Animated Blyst AI ring"
-      style={{ filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))" }}
     >
-      {/* Responsive Style for Mobile Centering */}
-      <style>
-        {`
-          @media (max-width: 600px) {
-            .logo-fade {
-              opacity: 1 !important;
-              filter: brightness(1.18) !important;
-            }
-          }
-        `}
-      </style>
-      <div
-        className="absolute inset-0 grid place-items-center"
-        aria-hidden
-        style={{
-          mask: "radial-gradient(circle at center, white 60%, transparent 61%)",
-          WebkitMask: "radial-gradient(circle at center, white 60%, transparent 61%)",
-        }}
-      >
-        <video
-          src={logoVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="logo-fade h-[80%] w-[80%] rounded-full object-cover opacity-100 drop-shadow-xl"
-        />
-      </div>
+      {/* Make video always circular, cover full parent */}
+      <video
+        src={logoVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full rounded-full object-cover logo-fade"
+      />
 
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      {/* Overlay SVG ring (use absolute to align perfectly) */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox={`0 0 ${size} ${size}`}
+      >
         <defs>
           <linearGradient id={`${id}-grad1`} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#9b5fff" />
@@ -104,7 +90,6 @@ export default function BrandWave({
             <feGaussianBlur stdDeviation="1.2" />
           </filter>
         </defs>
-
         <g filter={`url(#${id}-warp)`}>
           {[0, 1, 2].map((i) => {
             const dash = 40 + i * 10;
