@@ -1,4 +1,4 @@
-// --- File: backend/server.js (FINAL CORRECTED VERSION) ---
+// --- File: backend/server.js (FINAL CORRECTED VERSION FOR CONVERSATIONAL TONE) ---
 
 import express from 'express';
 import cors from 'cors';
@@ -62,8 +62,13 @@ app.post('/api/groq-ask', async (req, res) => {
             throw new Error("GROQ_API_KEY is not set in environment variables.");
         }
 
-        // Define the BLYST persona and model
-        const systemInstruction = "You are a concise business intelligence advisor named BLYST. Give short, data-driven, and actionable advice. Always respond in the format: <Answer>: [Your concise response]";
+        // 🟢 CRITICAL CHANGE: New conversational system instruction
+        const systemInstruction = `
+            You are BLYST AI, a friendly and insightful conversational AI. 
+            Your goal is to discuss high-level topics in a natural, flowing, paragraph-based format, like a trusted advisor. 
+            **IMPORTANT: Do not use bullet points, numbered lists, markdown headings (like ##), or bold text for emphasis.** Respond directly in continuous, easy-to-read prose. Keep your response to 2-3 short paragraphs maximum.
+        `;
+        
         const modelId = 'llama-3.1-8b-instant'; 
 
         // The groq() function will automatically use the GROQ_API_KEY from process.env
@@ -72,7 +77,8 @@ app.post('/api/groq-ask', async (req, res) => {
             system: systemInstruction,
             prompt: question,
             config: {
-                temperature: 0.2,
+                // ⬆️ Recommended: Increase temperature for a less rigid, more human-like response
+                temperature: 0.5, 
             }
         });
 
