@@ -6,42 +6,27 @@
 @tailwind utilities;
 
 @layer base {
-  /**
-   * Tailwind CSS theme
-   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
-   * A different format will require also updating the theme in tailwind.config.ts.
-  */
   :root {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
-
     --card: 0 0% 4%;
     --card-foreground: 0 0% 100%;
-
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 100%;
-
     --primary: 261 85% 66%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 192 100% 50%;
     --secondary-foreground: 0 0% 10%;
-
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 75%;
-
     --accent: 28 100% 60%;
     --accent-foreground: 0 0% 10%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 0 0% 12%;
     --input: 0 0% 12%;
     --ring: 0 0% 100%;
-
     --radius: 0.75rem;
-
     --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 261 85% 66%;
@@ -55,32 +40,23 @@
   .dark {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
-
     --card: 0 0% 4%;
     --card-foreground: 0 0% 100%;
-
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 100%;
-
     --primary: 261 85% 66%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 192 100% 50%;
     --secondary-foreground: 0 0% 10%;
-
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 75%;
-
     --accent: 28 100% 60%;
     --accent-foreground: 0 0% 10%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 0 0% 12%;
     --input: 0 0% 12%;
     --ring: 0 0% 100%;
-
     --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 261 85% 66%;
@@ -90,23 +66,18 @@
     --sidebar-border: 0 0% 16%;
     --sidebar-ring: 192 100% 50%;
   }
-}
 
-@layer base {
   * {
     @apply border-border antialiased;
-    /* FIX 1: Ensures padding/border are included in the element's total width */
     box-sizing: border-box; 
   }
 
-  /* FIX 2: Critical for preventing horizontal scroll and zoom on mobile */
   html,
   body {
-    overflow-x: hidden; /* Prevents horizontal scrolling */
-    width: 100%;       /* Ensures max width is respected */
-    margin: 0;         /* Clears default margins */
-    padding: 0;        /* Clears default padding */
-    
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     @apply bg-background text-foreground;
     font-family:
       Inter,
@@ -150,15 +121,10 @@
     /* filter: blur(10px); */
   }
 
-  /* 🟢 FIX 3: CRITICAL FOR REAL MOBILE VIEW HEIGHT (Addressing 100vh issue) */
   #root {
-    /* Set minimum height to ensure full coverage, especially on non-chat pages */
     min-height: 100dvh; 
-    /* Set explicit height for chat/main page to ensure it fills the dynamic viewport */
     height: 100dvh; 
   }
-
-  /* Fallback for older browsers that don't support dvh */
   @supports not (height: 100dvh) {
       #root {
           min-height: 100vh;
@@ -179,4 +145,23 @@
       0 0 40px rgba(155, 95, 255, 0.25),
       0 0 80px rgba(0, 212, 255, 0.18);
   }
+  /* LOGO CONTAINER FOR PERFECT CENTERING */
+  .logo-container {
+    @apply flex items-center justify-center w-full min-h-[220px] max-w-full relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* LOGO VIDEO/VISIBILITY FIX FOR MOBILE */
+  .logo-fade {
+    opacity: 1 !important;
+    filter: brightness(1.18) !important;
+  }
+}
+
+/* Extra: Remove unwanted mobile WebKit video controls if using video */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video {
+  pointer-events: none;
 }

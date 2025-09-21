@@ -18,20 +18,13 @@ export default function BrandWave({
     "https://cdn.builder.io/o/assets%2F172b15ac9718458aa01c370ab6e1a4cf%2F2dda27bd7840414ca4a3cdf13f331080?alt=media&token=c49e08ab-2e73-4536-82ec-2e87291bde10&apiKey=172b15ac9718458aa01c370ab6e1a4cf";
 
   const { strokeWidth, radius } = useMemo(() => {
-    // Keep stroke width calculations relative to size for internal consistency
     const sw = Math.max(6, Math.floor(size / 40));
     return { strokeWidth: sw, radius: size / 2 - sw };
   }, [size]);
 
-  // Use a responsive size class for the container
-  const responsiveSizeClass = `w-[${size}px] h-[${size}px] max-w-full`; 
-    
   return (
-    // FIX 1: Wrap the entire component in a container with a responsive max width and centered margins.
-    // The use of size in 'w-[${size}px]' ensures the component is constrained to its intended maximum size, 
-    // but the surrounding layout (from index.tsx) ensures it is centered.
     <div
-      className={`relative select-none mx-auto ${responsiveSizeClass} ${className}`} 
+      className={`flex items-center justify-center w-full max-w-[${size}px] min-h-[${size}px] mx-auto relative select-none ${className}`}
       onMouseEnter={() => setBoost(true)}
       onMouseLeave={() => setBoost(false)}
       onClick={() => setBoost((b) => !b)}
@@ -39,18 +32,24 @@ export default function BrandWave({
       aria-label="Animated Blyst AI ring"
       style={{ filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))" }}
     >
-      
-      {/* Container for the centered video */}
+      {/* Responsive Style for Mobile Centering */}
+      <style>
+        {`
+          @media (max-width: 600px) {
+            .logo-fade {
+              opacity: 1 !important;
+              filter: brightness(1.18) !important;
+            }
+          }
+        `}
+      </style>
       <div
         className="absolute inset-0 grid place-items-center"
         aria-hidden
-        style={
-          {
-            mask: "radial-gradient(circle at center, white 60%, transparent 61%)",
-            WebkitMask:
-              "radial-gradient(circle at center, white 60%, transparent 61%)",
-          } as any
-        }
+        style={{
+          mask: "radial-gradient(circle at center, white 60%, transparent 61%)",
+          WebkitMask: "radial-gradient(circle at center, white 60%, transparent 61%)",
+        }}
       >
         <video
           src={logoVideo}
@@ -58,13 +57,11 @@ export default function BrandWave({
           loop
           muted
           playsInline
-          className="h-[80%] w-[80%] rounded-full object-cover opacity-70"
+          className="logo-fade h-[80%] w-[80%] rounded-full object-cover opacity-100 drop-shadow-xl"
         />
       </div>
 
-      {/* FIX 2: Change SVG dimensions to 100% for full responsiveness and quality. 
-          The 'viewBox' handles the internal scaling correctly. */}
-      <svg width="100%" height="100%" viewBox={`0 0 ${size} ${size}`}> 
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <defs>
           <linearGradient id={`${id}-grad1`} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#9b5fff" />
