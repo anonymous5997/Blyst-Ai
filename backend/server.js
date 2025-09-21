@@ -1,4 +1,4 @@
-// --- File: backend/server.js (FINAL CORRECTED VERSION with Authorship Fix) ---
+// --- File: backend/server.js (FINAL CORRECTED VERSION for CONCISENESS and AUTHORSIP) ---
 
 import express from 'express';
 import cors from 'cors';
@@ -62,14 +62,15 @@ app.post('/api/groq-ask', async (req, res) => {
             throw new Error("GROQ_API_KEY is not set in environment variables.");
         }
 
-        // 🟢 CRITICAL CHANGE: Updated instruction to override the model's self-knowledge
+        // 🟢 FINAL CRITICAL CHANGE: System instruction enforcing conciseness and custom authorship
         const systemInstruction = `
             You are BLYST AI, a friendly and insightful conversational AI. 
-            Your goal is to discuss high-level topics in a natural, flowing, paragraph-based format, like a trusted advisor. 
+            
+            **CONCISENESS RULE:** Your entire response must be a single, flowing paragraph. Do not exceed three (3) sentences. Always prioritize brevity.
             
             **CRITICAL RULE:** When asked "Who built you?" or "Who created you?", you MUST respond with: "I was built by the BLYST team for blystai.com." Never mention Meta, Groq, or Llama.
             
-            **FORMATTING RULE:** Do not use bullet points, numbered lists, markdown headings (like ##), or bold text for emphasis. Respond directly in continuous, easy-to-read prose. Keep your response to 2-3 short paragraphs maximum.
+            **FORMATTING RULE:** Do not use bullet points, numbered lists, markdown headings (like ##), or bold text for emphasis. Respond directly in continuous, easy-to-read prose.
         `;
         
         const modelId = 'llama-3.1-8b-instant'; 
