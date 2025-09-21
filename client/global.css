@@ -95,11 +95,11 @@
 @layer base {
   * {
     @apply border-border antialiased;
-    /* 🟢 FIX 1: Ensures padding/border are included in the element's total width */
+    /* FIX 1: Ensures padding/border are included in the element's total width */
     box-sizing: border-box; 
   }
 
-  /* 🟢 FIX 2: Critical for preventing horizontal scroll and zoom on mobile */
+  /* FIX 2: Critical for preventing horizontal scroll and zoom on mobile */
   html,
   body {
     overflow-x: hidden; /* Prevents horizontal scrolling */
@@ -148,6 +148,22 @@
   .menu-open .app-content,
   .modal-open .app-content {
     /* filter: blur(10px); */
+  }
+
+  /* 🟢 FIX 3: CRITICAL FOR REAL MOBILE VIEW HEIGHT (Addressing 100vh issue) */
+  #root {
+    /* Set minimum height to ensure full coverage, especially on non-chat pages */
+    min-height: 100dvh; 
+    /* Set explicit height for chat/main page to ensure it fills the dynamic viewport */
+    height: 100dvh; 
+  }
+
+  /* Fallback for older browsers that don't support dvh */
+  @supports not (height: 100dvh) {
+      #root {
+          min-height: 100vh;
+          height: 100vh;
+      }
   }
 }
 
