@@ -95,9 +95,18 @@
 @layer base {
   * {
     @apply border-border antialiased;
+    /* 🟢 FIX 1: Ensures padding/border are included in the element's total width */
+    box-sizing: border-box; 
   }
 
+  /* 🟢 FIX 2: Critical for preventing horizontal scroll and zoom on mobile */
+  html,
   body {
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    width: 100%;       /* Ensures max width is respected */
+    margin: 0;         /* Clears default margins */
+    padding: 0;        /* Clears default padding */
+    
     @apply bg-background text-foreground;
     font-family:
       Inter,
