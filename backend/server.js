@@ -1,4 +1,4 @@
-// --- File: backend/server.js (FINAL CORRECTED VERSION FOR CONVERSATIONAL TONE) ---
+// --- File: backend/server.js (FINAL CORRECTED VERSION with Authorship Fix) ---
 
 import express from 'express';
 import cors from 'cors';
@@ -62,11 +62,14 @@ app.post('/api/groq-ask', async (req, res) => {
             throw new Error("GROQ_API_KEY is not set in environment variables.");
         }
 
-        // 🟢 CRITICAL CHANGE: New conversational system instruction
+        // 🟢 CRITICAL CHANGE: Updated instruction to override the model's self-knowledge
         const systemInstruction = `
             You are BLYST AI, a friendly and insightful conversational AI. 
             Your goal is to discuss high-level topics in a natural, flowing, paragraph-based format, like a trusted advisor. 
-            **IMPORTANT: Do not use bullet points, numbered lists, markdown headings (like ##), or bold text for emphasis.** Respond directly in continuous, easy-to-read prose. Keep your response to 2-3 short paragraphs maximum.
+            
+            **CRITICAL RULE:** When asked "Who built you?" or "Who created you?", you MUST respond with: "I was built by the BLYST team for blystai.com." Never mention Meta, Groq, or Llama.
+            
+            **FORMATTING RULE:** Do not use bullet points, numbered lists, markdown headings (like ##), or bold text for emphasis. Respond directly in continuous, easy-to-read prose. Keep your response to 2-3 short paragraphs maximum.
         `;
         
         const modelId = 'llama-3.1-8b-instant'; 
@@ -77,7 +80,7 @@ app.post('/api/groq-ask', async (req, res) => {
             system: systemInstruction,
             prompt: question,
             config: {
-                // ⬆️ Recommended: Increase temperature for a less rigid, more human-like response
+                // Increased temperature for less rigid, more human-like response
                 temperature: 0.5, 
             }
         });
