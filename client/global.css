@@ -52,14 +52,44 @@
     --sidebar-ring: 192 100% 50%;
   }
 
-  /* * CORRECTION 1: Removed redundant '.dark' block. 
-   * Since your ':root' defines a dark theme, a separate identical '.dark' block is unnecessary. 
-   * If you introduce a light theme later, you would then define light variables in ':root' 
-   * and override them with dark variables here:
-   * .dark { 
-   * --background: ... (dark value) 
-   * }
-  */
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 261 85% 66%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 192 100% 50%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 75%;
+
+    --accent: 28 100% 60%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 100%;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 261 85% 66%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 192 100% 50%;
+  }
 }
 
 @layer base {
@@ -74,12 +104,8 @@
   body {
     overflow-x: hidden; /* Prevents horizontal scrolling */
     width: 100%;       /* Ensures max width is respected */
-    
-    /* * CORRECTION 2: Removed redundant 'margin: 0;' and 'padding: 0;'.
-     * Tailwind's 'base' layer (specifically Preflight) already normalizes these values
-     * to 0, making explicit declaration unnecessary and potentially conflicting 
-     * with browser defaults in the past, though harmless today.
-    */
+    margin: 0;         /* Clears default margins */
+    padding: 0;        /* Clears default padding */
     
     @apply bg-background text-foreground;
     font-family:
