@@ -37,36 +37,6 @@
     --sidebar-ring: 192 100% 50%;
   }
 
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 261 85% 66%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 192 100% 50%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 75%;
-    --accent: 28 100% 60%;
-    --accent-foreground: 0 0% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
-    --ring: 0 0% 100%;
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 261 85% 66%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 16%;
-    --sidebar-ring: 192 100% 50%;
-  }
-
   * {
     @apply border-border antialiased;
     box-sizing: border-box; 
@@ -76,8 +46,6 @@
   body {
     overflow-x: hidden;
     width: 100%;
-    margin: 0;
-    padding: 0;
     @apply bg-background text-foreground;
     font-family:
       Inter,
@@ -145,20 +113,15 @@
       0 0 40px rgba(155, 95, 255, 0.25),
       0 0 80px rgba(0, 212, 255, 0.18);
   }
-  /* LOGO CONTAINER FOR PERFECT CENTERING */
   .logo-container {
     @apply flex items-center justify-center mx-auto aspect-square relative w-full;
-    margin-left: 340px;
-    margin-right: 200px;
   }
-  /* LOGO VIDEO/VISIBILITY FIX FOR MOBILE */
   .logo-fade {
     opacity: 1 !important;
     filter: brightness(1.18) !important;
   }
 }
 
-/* Extra: Remove unwanted mobile WebKit video controls if using video */
 video::-webkit-media-controls {
   display: none !important;
 }
