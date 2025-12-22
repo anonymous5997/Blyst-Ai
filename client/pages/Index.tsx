@@ -36,7 +36,7 @@ export default function Index() {
   return (
     <div className="mx-auto max-w-7xl">
       <section className="relative flex flex-col items-center justify-center gap-2 sm:gap-4 md:gap-6 pt-3 sm:pt-8 md:pt-12 pb-2 sm:pb-0 px-4 sm:px-0 min-h-screen sm:min-h-auto">
-        <BrandWave size={220} className="w-[220px] h-[220px] sm:w-auto sm:h-auto" />
+        <BrandWave size={isMobile ? 220 : 340} />
         <div className="text-center px-2 sm:px-0 max-w-2xl">
           <h1 className="text-lg sm:text-3xl md:text-4xl font-extrabold text-white leading-snug sm:leading-tight">
             Cognitive Interfaces for Business
