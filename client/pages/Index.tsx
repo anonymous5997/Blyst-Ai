@@ -25,25 +25,25 @@ export default function Index() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <section className="relative flex flex-col items-center gap-3 sm:gap-4 md:gap-6 pt-6 sm:pt-8 md:pt-12 px-4 sm:px-0">
-        <BrandWave size={280} className="sm:scale-100 scale-90" />
-        <div className="text-center px-2 sm:px-0">
-          <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
+      <section className="relative flex flex-col items-center justify-center gap-2 sm:gap-4 md:gap-6 pt-3 sm:pt-8 md:pt-12 pb-2 sm:pb-0 px-4 sm:px-0 min-h-screen sm:min-h-auto">
+        <BrandWave size={220} className="w-[220px] h-[220px] sm:w-auto sm:h-auto" />
+        <div className="text-center px-2 sm:px-0 max-w-2xl">
+          <h1 className="text-lg sm:text-3xl md:text-4xl font-extrabold text-white leading-snug sm:leading-tight">
             Cognitive Interfaces for Business
           </h1>
-          <p className="mt-2 text-xs sm:text-sm md:text-base text-white/70 leading-relaxed">
+          <p className="mt-1 sm:mt-2 text-xs sm:text-sm md:text-base text-white/70 leading-relaxed">
             Understand intent. Generate insight. Orchestrate action.
           </p>
         </div>
         <a
           href="#clone-hero"
-          className="mt-2 sm:mt-3 inline-flex items-center justify-center rounded-full border border-white/30 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-white/10 transition"
+          className="mt-3 sm:mt-3 inline-flex items-center justify-center rounded-full border border-white/30 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-white/10 transition"
         >
           VIEW MORE
         </a>
       </section>
 
-      <section aria-label="AI Insights" className="mt-4 md:mt-6">
+      <section aria-label="AI Insights" className="mt-2 sm:mt-4 md:mt-6">
         <InsightsGrid insights={insights} />
       </section>
 
