@@ -13,7 +13,7 @@ export default function FloatingAsk() {
   return (
     <>
       <button
-        className="fixed bottom-5 right-5 z-[190] inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] px-4 py-3 text-sm font-semibold text-black shadow-[0_12px_40px_rgba(0,212,255,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="fixed bottom-5 right-5 z-[190] hidden sm:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] px-4 py-3 text-sm font-semibold text-black shadow-[0_12px_40px_rgba(0,212,255,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={open}
