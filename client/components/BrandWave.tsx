@@ -14,8 +14,8 @@ export default function BrandWave({
   const [boost, setBoost] = useState(false);
   const idRef = useRef(`wave-${Math.random().toString(36).slice(2)}`);
   const id = idRef.current;
-  const logoVideo =
-    "https://cdn.builder.io/o/assets%2F172b15ac9718458aa01c370ab6e1a4cf%2F2dda27bd7840414ca4a3cdf13f331080?alt=media&token=c49e08ab-2e73-4536-82ec-2e87291bde10&apiKey=172b15ac9718458aa01c370ab6e1a4cf";
+  const logoImage =
+    "https://cdn.builder.io/api/v1/image/assets%2F172b15ac9718458aa01c370ab6e1a4cf%2F82be51a11e724141916ed7feddb66f68?format=webp&width=800";
 
   const { strokeWidth, radius } = useMemo(() => {
     const sw = Math.max(6, Math.floor(size / 40));
@@ -43,13 +43,10 @@ export default function BrandWave({
           } as any
         }
       >
-        <video
-          src={logoVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-[80%] w-[80%] rounded-full object-cover opacity-70"
+        <img
+          src={logoImage}
+          alt="Blyst AI Logo"
+          className="h-[80%] w-[80%] rounded-full object-cover opacity-90"
         />
       </div>
 
