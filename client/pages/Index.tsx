@@ -25,19 +25,19 @@ export default function Index() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <section className="relative flex flex-col items-center gap-4 md:gap-6 pt-8 md:pt-12">
-        <BrandWave size={340} />
-        <div className="text-center">
-          <h1 className="text-2xl md:text-4xl font-extrabold text-white">
+      <section className="relative flex flex-col items-center gap-3 sm:gap-4 md:gap-6 pt-6 sm:pt-8 md:pt-12 px-4 sm:px-0">
+        <BrandWave size={280} className="sm:scale-100 scale-90" />
+        <div className="text-center px-2 sm:px-0">
+          <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
             Cognitive Interfaces for Business
           </h1>
-          <p className="mt-2 text-sm md:text-base text-white/70">
+          <p className="mt-2 text-xs sm:text-sm md:text-base text-white/70 leading-relaxed">
             Understand intent. Generate insight. Orchestrate action.
           </p>
         </div>
         <a
           href="#clone-hero"
-          className="mt-3 inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2 text-sm font-semibold text-white hover:bg-white/10 transition"
+          className="mt-2 sm:mt-3 inline-flex items-center justify-center rounded-full border border-white/30 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-white/10 transition"
         >
           VIEW MORE
         </a>
