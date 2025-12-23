@@ -35,21 +35,21 @@ export default function Index() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <section className="relative flex flex-col items-center justify-start gap-0 sm:gap-5 md:gap-8 py-4 sm:py-6 md:py-10 px-4 sm:px-0">
-        <div className="flex items-center justify-center pt-2 sm:pt-0 w-full">
+      <section className="relative flex flex-col items-center justify-start gap-2 sm:gap-5 md:gap-8 py-4 sm:py-6 md:py-10 px-4 sm:px-0">
+        <div className="flex items-center justify-center pt-0 sm:pt-0 w-full">
           <BrandWave size={isMobile ? 200 : 340} />
         </div>
-        <div className="text-center w-full max-w-sm sm:max-w-2xl px-0 sm:px-4">
-          <h1 className="text-xl sm:text-4xl md:text-5xl font-extrabold text-white leading-[1.2] sm:leading-[1.1] md:leading-tight tracking-tight">
+        <div className="text-center w-full flex flex-col items-center px-0 sm:px-4">
+          <h1 className="w-full max-w-[90%] sm:max-w-2xl text-xl sm:text-4xl md:text-5xl font-extrabold text-white leading-[1.2] sm:leading-[1.1] md:leading-tight tracking-tight">
             Cognitive Interfaces for Business
           </h1>
-          <p className="mt-2 sm:mt-3 md:mt-4 text-[0.8125rem] sm:text-base md:text-lg text-white/50 font-light leading-[1.5] sm:leading-relaxed">
+          <p className="mt-1 sm:mt-3 md:mt-4 w-full max-w-[90%] sm:max-w-2xl text-[0.8125rem] sm:text-base md:text-lg text-white/50 font-light leading-[1.5] sm:leading-relaxed">
             Understand intent. Generate insight. Orchestrate action.
           </p>
         </div>
         <a
           href="#clone-hero"
-          className="mt-6 sm:mt-5 md:mt-6 inline-flex items-center justify-center rounded-full border border-white/30 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-white/10 transition whitespace-nowrap"
+          className="mt-3 sm:mt-5 md:mt-6 inline-flex items-center justify-center rounded-full border border-white/30 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-white/10 transition whitespace-nowrap"
         >
           VIEW MORE
         </a>
