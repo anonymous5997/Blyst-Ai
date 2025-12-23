@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MessageSquare, X } from "lucide-react"; 
+import { MessageSquare, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 // Corrected import path (assuming it now works for your file structure)
@@ -12,7 +12,7 @@ export default function FloatingAsk() {
     // Prevents background scrolling when the modal is open
     if (open) document.documentElement.classList.add("modal-open");
     else document.documentElement.classList.remove("modal-open");
-    
+
     // Cleanup function
     return () => document.documentElement.classList.remove("modal-open");
   }, [open]);
@@ -26,7 +26,8 @@ export default function FloatingAsk() {
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <MessageSquare className="size-3 sm:size-4" /> <span className="hidden sm:inline">Ask Blyst AI</span>
+        <MessageSquare className="size-3 sm:size-4" />{" "}
+        <span className="hidden sm:inline">Ask Blyst AI</span>
       </button>
 
       <AnimatePresence>
@@ -51,25 +52,24 @@ export default function FloatingAsk() {
               exit={{ y: 40, opacity: 0 }}
               transition={{ type: "spring", stiffness: 260, damping: 26 }}
               className="fixed bottom-6 right-6 w-[92%] max-w-md rounded-2xl border border-white/10 bg-neutral-900 p-4 shadow-xl z-[200]"
-              onClick={(e) => e.stopPropagation()} 
+              onClick={(e) => e.stopPropagation()}
             >
               {/* Header & Close Button */}
               <div className="flex justify-between items-center mb-2">
-                 <h3 className="text-white/90 font-semibold">
-                    Conversational Intelligence (BLYST AI)
-                 </h3>
-                 <button 
-                    onClick={() => setOpen(false)}
-                    className="p-1 rounded-full text-white/70 hover:text-white hover:bg-white/10"
-                    aria-label="Close Chat"
-                 >
-                    <X className="size-5" />
-                 </button>
+                <h3 className="text-white/90 font-semibold">
+                  Conversational Intelligence (BLYST AI)
+                </h3>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="p-1 rounded-full text-white/70 hover:text-white hover:bg-white/10"
+                  aria-label="Close Chat"
+                >
+                  <X className="size-5" />
+                </button>
               </div>
 
               {/* Render your working chat component */}
-              <BlystAIChat /> 
-              
+              <BlystAIChat />
             </motion.div>
           </>
         )}

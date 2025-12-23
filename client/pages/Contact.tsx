@@ -26,7 +26,7 @@ export default function Contact() {
         {
           method: "POST",
           body: formData,
-        }
+        },
       );
 
       if (response.ok) {
