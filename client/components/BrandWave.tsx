@@ -25,7 +25,11 @@ export default function BrandWave({
   return (
     <div
       className={`logo-container mx-auto aspect-square relative select-none ${className}`}
-      style={{ maxWidth: size, minWidth: 200, filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))" }}
+      style={{
+        maxWidth: size,
+        minWidth: 200,
+        filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))",
+      }}
       onMouseEnter={() => setBoost(true)}
       onMouseLeave={() => setBoost(false)}
       onClick={() => setBoost((b) => !b)}
