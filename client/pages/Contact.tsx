@@ -188,8 +188,13 @@ export default function Contact() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-white/80"
           >
-            <div className="flex items-center gap-2">
-              <Mail className="size-4" /> info@blystai.com
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2">
+                <Mail className="size-4" /> info@blystai.com
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="size-4" /> blystaiteam@gmail.com
+              </div>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="size-4" /> Bhubaneswar , Odisha , India
