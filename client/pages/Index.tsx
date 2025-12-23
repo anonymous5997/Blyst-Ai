@@ -104,7 +104,10 @@ function InsightsGrid({ insights }: { insights: string[] }) {
         <motion.div key={i} variants={item} className="h-full">
           <Card className="bg-card/70 backdrop-blur border-white/10 shadow-[0_0_24px_rgba(155,95,255,0.12)] h-full">
             <CardContent className="p-5 md:p-6 h-full flex flex-col">
-              <TypewriterText className="text-white/90 leading-[1.5] break-words whitespace-normal" text={line} />
+              <TypewriterText
+                className="text-white/90 leading-[1.5] break-words whitespace-normal"
+                text={line}
+              />
             </CardContent>
           </Card>
         </motion.div>
