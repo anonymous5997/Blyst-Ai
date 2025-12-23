@@ -21,12 +21,12 @@ export default function FloatingAsk() {
     <>
       {/* Floating Button */}
       <button
-        className="fixed bottom-5 right-5 z-[190] hidden sm:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] px-4 py-3 text-sm font-semibold text-black shadow-[0_12px_40px_rgba(0,212,255,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="fixed bottom-8 sm:bottom-5 right-5 z-[999] inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#9b5fff] via-[#00d4ff] to-[#ff8a00] px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-black shadow-[0_12px_40px_rgba(0,212,255,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white hover:shadow-[0_16px_48px_rgba(0,212,255,0.45)] transition-shadow"
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <MessageSquare className="size-4" /> Ask Blyst AI
+        <MessageSquare className="size-3 sm:size-4" /> <span className="hidden sm:inline">Ask Blyst AI</span>
       </button>
 
       <AnimatePresence>
