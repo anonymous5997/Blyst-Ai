@@ -98,12 +98,12 @@ function InsightsGrid({ insights }: { insights: string[] }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      className="grid gap-2 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3"
     >
       {insights.map((line, i) => (
         <motion.div key={i} variants={item} className="h-full">
-          <Card className="bg-card/70 backdrop-blur border-white/10 shadow-[0_0_24px_rgba(155,95,255,0.12)] h-full">
-            <CardContent className="p-5 md:p-6 h-full flex flex-col">
+          <Card className="bg-card/70 backdrop-blur border-white/10 shadow-[0_0_24px_rgba(155,95,255,0.12)] rounded-lg sm:rounded-lg h-full">
+            <CardContent className="p-3.5 sm:p-5 md:p-6 h-full flex flex-col">
               <TypewriterText
                 className="text-white/90 leading-[1.5] break-words whitespace-normal"
                 text={line}
