@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import TypewriterText from "@/components/TypewriterText";
+// 1. 💥 IMPORT THE CHAT COMPONENT 💥
+import BlystAIChat from "@/components/BlystAIchat.jsx";
 
 export default function ExpandingCards() {
   const [open, setOpen] = useState(false);
@@ -117,37 +119,8 @@ export default function ExpandingCards() {
             transition={{ duration: 0.5 }}
             className="mt-8"
           >
-            <Card className="bg-card/70 backdrop-blur border-white/10 overflow-hidden">
-              <CardContent className="p-0">
-                <div className="p-4 md:p-6">
-                  <h3 className="text-2xl font-semibold text-white">
-                    Conversational Intelligence
-                  </h3>
-                  <div className="mt-4 space-y-3">
-                    <div className="max-w-[80%] rounded-xl bg-white/5 px-4 py-3 text-white/90 shadow">
-                      How can we cut onboarding time by 20%?
-                    </div>
-                    <div className="max-w-[85%] rounded-xl bg-gradient-to-r from-[#9b5fff]/10 to-[#00d4ff]/10 px-4 py-3 text-white/90 shadow ml-auto">
-                      Leverage guided flows + prefilled steps; estimated 24%
-                      reduction based on similar teams.
-                    </div>
-                  </div>
-                  <form
-                    onSubmit={(e) => e.preventDefault()}
-                    className="mt-4 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-2"
-                  >
-                    <input
-                      className="flex-1 bg-transparent px-3 py-2 text-white placeholder-white/50 focus:outline-none"
-                      placeholder="Ask Blyst AI…"
-                      aria-label="Ask Blyst AI"
-                    />
-                    <button className="rounded-md bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20 transition">
-                      Send
-                    </button>
-                  </form>
-                </div>
-              </CardContent>
-            </Card>
+            {/* 2. 💥 REPLACE MOCKUP WITH REAL COMPONENT 💥 */}
+            <BlystAIChat />
           </motion.div>
         )}
       </AnimatePresence>

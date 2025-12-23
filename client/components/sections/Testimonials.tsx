@@ -3,14 +3,14 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const QUOTES = [
   {
-    q: "Blyst AI cut our decision time from days to minutes.",
-    a: "VP Analytics, FinServe",
+    q: "Blyst AI created a wonderfully animated website for our school, Ankuram Kids, at an amazingly affordable cost—truly the best destination for all kinds of IT solutions!.",
+    a: "Director, Ankuram Kids",
   },
   {
-    q: "Fastest path to insights we’ve deployed.",
-    a: "Head of Data, Commerce",
+    q: "Blyst AI brought AchievoQuest to life with a stunning animated website at an unbeatable price—the ultimate destination for all IT services!.",
+    a: "Founder, AchievoQuest",
   },
-  { q: "Compliance‑friendly and genuinely helpful.", a: "CISO, Healthcare" },
+  { q: "Blyst AI crafted a powerful, animated portfolio website that not only showcases professional expertise but also boosts SEO performance—delivering standout online presence and greater client reach with exceptional value..", a: "A.K & Associates" },
 ];
 
 export default function Testimonials() {

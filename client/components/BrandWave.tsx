@@ -24,13 +24,13 @@ export default function BrandWave({
 
   return (
     <div
-      className={"relative select-none " + className}
+      className={`logo-container mx-auto aspect-square relative select-none ${className}`}
+      style={{ maxWidth: size, minWidth: 200, filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))" }}
       onMouseEnter={() => setBoost(true)}
       onMouseLeave={() => setBoost(false)}
       onClick={() => setBoost((b) => !b)}
       role="img"
       aria-label="Animated Blyst AI ring"
-      style={{ filter: "drop-shadow(0 0 24px rgba(153, 102, 255, 0.35))" }}
     >
       <div
         className="absolute inset-0 grid place-items-center"
@@ -50,7 +50,10 @@ export default function BrandWave({
         />
       </div>
 
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox={`0 0 ${size} ${size}`}
+      >
         <defs>
           <linearGradient id={`${id}-grad1`} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#9b5fff" />
@@ -93,7 +96,6 @@ export default function BrandWave({
             <feGaussianBlur stdDeviation="1.2" />
           </filter>
         </defs>
-
         <g filter={`url(#${id}-warp)`}>
           {[0, 1, 2].map((i) => {
             const dash = 40 + i * 10;

@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <form className="flex w-full md:w-auto items-center gap-2">
-            <input
+            {/* <input
               type="email"
               required
               placeholder="Your email"
@@ -16,7 +16,7 @@ export default function Footer() {
               aria-label="Subscribe"
             >
               Subscribe
-            </button>
+            </button> */}
           </form>
           <nav className="text-sm flex gap-4">
             <a href="/" className="hover:text-white">

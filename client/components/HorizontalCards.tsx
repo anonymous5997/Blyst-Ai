@@ -24,7 +24,9 @@ const cards = [
 ];
 
 export default function HorizontalCards() {
-  const [open, setOpen] = useState(false);
+  // You can remove useState and the modal component entirely if you don't need it for *any* card.
+  // I will leave them here in case you use them elsewhere.
+  const [open, setOpen] = useState(false); 
   const scroller = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -39,8 +41,11 @@ export default function HorizontalCards() {
             type="button"
             aria-haspopup="dialog"
             aria-controls="insights-modal"
+            // *** CHANGE IS HERE: Remove the entire onClick function or leave it empty ***
             onClick={() => {
-              if (i === 1) setOpen(true);
+              // This is now empty, so clicking the button does nothing (no blur, no redirect).
+              // If you want it to navigate, you would use a router link instead of a button/onClick.
+              // If you want to enable the modal for a *different* card, change the 'i' value.
             }}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -60,6 +65,7 @@ export default function HorizontalCards() {
         ))}
       </div>
 
+      {/* The modal is still present but will not open unless 'open' is set to true somewhere else */}
       <InsightsModal open={open} onClose={() => setOpen(false)} />
     </section>
   );
