@@ -33,7 +33,7 @@ export default function TypewriterText({
       aria-live="polite"
     >
       {letters.map((ch, i) => (
-        <motion.span key={i} variants={child} className="inline-block">
+        <motion.span key={i} variants={child}>
           {ch === " " ? "\u00A0" : ch}
         </motion.span>
       ))}
